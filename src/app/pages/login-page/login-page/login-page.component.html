@@ -1,0 +1,75 @@
+<app-page-header
+  icon="fa-solid fa-sign-in"
+  title="Login Page"
+  subtitle="This is the login page"
+  bgColor="alert-secondary rounded-3 p-2"
+></app-page-header>
+
+<div class="center mt-4">
+  <form
+    #loginForm="ngForm"
+    (ngSubmit)="onSubmit(loginForm)"
+    class="col-12 col-md-6 col-xl-4 p-4 alert-success rounded"
+  >
+    <div class="form-group mb-2">
+      <label for="email">{{ "email" | titlecase }}</label>
+      <input
+        ngModel
+        id="email"
+        name="email"
+        type="text"
+        class="form-control"
+        autocomplete="off"
+        placeholder="user@mail.com"
+        required
+        minlength="4"
+        pattern=".+@.+\..{2,}"
+        #email="ngModel"
+        [ngClass]="{
+          'is-invalid': email.invalid && email.touched,
+          'is-valid': email.valid && email.touched
+        }"
+      />
+      <span class="invalid-feedback"
+        >{{ "please enter a valid email" | paragraphCapital }}
+      </span>
+    </div>
+    <div>
+      <label for="password">{{ "password" | titlecase }}</label>
+      <input
+        ngModel
+        id="password"
+        name="password"
+        type="password"
+        class="form-control"
+        autocomplete="off"
+        placeholder="Aa1234!"
+        required
+        minlength="7"
+        #password="ngModel"
+        [ngClass]="{
+          'is-invalid': password.invalid && password.touched,
+          'is-valid': password.valid && password.touched
+        }"
+      />
+      <span class="invalid-feedback"
+        >{{ "please enter a valid password" | paragraphCapital }}
+      </span>
+    </div>
+
+    <input
+      type="button"
+      (click)="resetForm(loginForm)"
+      value="Reset"
+      class="btn btn-danger col-12 mb-2"
+    />
+
+    <button
+      [disabled]="loginForm.form.invalid"
+      type="submit"
+      class="col-12 btn btn-success"
+    >
+      {{ "submit" | titlecase }}
+    </button>
+  </form>
+</div>

@@ -1,0 +1,58 @@
+<app-page-header
+  title="customers"
+  subtitle="a customer page"
+  icon="fas fa-users"
+></app-page-header>
+
+<div class="mb-2">
+  <a
+    routerLink="new-customer"
+    class="btn btn-outline-dark"
+    title="add new customer"
+    role="button"
+    >{{ "add a new customer" | paragraphCapital }}</a
+  >
+</div>
+
+<table
+  *ngIf="customers && customers.length; else noCustomers"
+  class="table table-striped container mt-4"
+>
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <!-- <th scope="col">id</th> -->
+      <th scope="col">Full Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Birthday</th>
+      <th scope="col">Age</th>
+      <th scope="col">Address</th>
+      <th scope="col">Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let customer of customers; index as i">
+      <th scope="row">{{ i + 1 }}</th>
+      <!-- <td>{{ customer._id }}</td> -->
+      <td>{{ customer.firstName + " " + customer.lastName }}</td>
+      <td>{{ customer.email }}</td>
+      <td>{{ customer.phone }}</td>
+      <td>{{ customer.birthDay | date: "mediumDate" }}</td>
+      <td>{{ customer.age }}</td>
+
+      <td>
+        {{ this.customer.address?.city }}
+        {{ this.customer.address?.street }}
+        {{ this.customer.address?.houseNumber }}
+      </td>
+      <td>{{ this.customer.notes }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #noCustomers>
+  <div>
+    {{ "opss... no customers where found in the database!" | paragraphCapital }}
+  </div>
+</ng-template>
