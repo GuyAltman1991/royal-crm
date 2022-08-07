@@ -8,10 +8,13 @@ import { CustomersPageComponent } from '../pages/customers-page/customers-page/c
 import { NewCustomerComponent } from '../pages/customers-page/new-customer/new-customer.component';
 import { ErrorPageComponent } from '../pages/error-page/error-page.component';
 import { LoginPageComponent } from '../pages/login-page/login-page/login-page.component';
+import { SignupPageComponent } from '../pages/signup-page/signup-page/signup-page.component';
 
 const routes: Routes = [
   { path: '', component: LoginPageComponent },
   { path: 'login-page', component: LoginPageComponent },
+  { path: 'logout-page', component: LoginPageComponent },
+  { path: 'signup-page', component: SignupPageComponent },
   { path: 'about-page', component: AboutPageComponent },
   { path: 'contacts', component: ContactsPageComponent },
   { path: 'contacts/new-contact', component: NewContactComponent },

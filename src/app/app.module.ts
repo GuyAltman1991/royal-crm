@@ -29,6 +29,7 @@ import { AboutPageComponent } from './pages/about-page/about-page.component';
 import { ContactFormComponent } from './pages/contacts/contact-form/contact-form.component';
 import { NewCustomerComponent } from './pages/customers-page/new-customer/new-customer.component';
 import { CustomerFormComponent } from './pages/customers-page/customer-form/customer-form.component';
+import { SignupPageComponent } from './pages/signup-page/signup-page/signup-page.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { CustomerFormComponent } from './pages/customers-page/customer-form/cust
     ContactFormComponent,
     NewCustomerComponent,
     CustomerFormComponent,
+    SignupPageComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],

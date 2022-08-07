@@ -20,30 +20,33 @@
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">id</th>
+      <!-- <th scope="col">id</th> -->
       <th scope="col">Full Name</th>
       <th scope="col">Email</th>
       <th scope="col">Phone</th>
-      <th scope="col">Birthday</th>
+      <!-- <th scope="col">Birthday</th>
       <th scope="col">Age</th>
-      <th scope="col">Address</th>
+      <th scope="col">Address</th> -->
+      <th scope="col">Notes</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let contact of contacts; index as i">
       <th scope="row">{{ i + 1 }}</th>
-      <td>{{ contact._id }}</td>
+      <!-- <td>{{ contact._id }}</td> -->
       <td>{{ contact.firstName + " " + contact.lastName }}</td>
       <td>{{ contact.email }}</td>
       <td>{{ contact.phone }}</td>
+      <td>{{ contact.notes }}</td>
       <td>
-        {{ contact.birthDay | date: "mediumDate" }}
+        <!-- {{ contact.birthDay | date: "mediumDate" }}
       </td>
       <td>{{ contact.age }}</td>
       <td>
         {{ this.contact.address?.city }}
         {{ this.contact.address?.street }}
         {{ this.contact.address?.houseNumber }}
+      </td> -->
       </td>
     </tr>
   </tbody>

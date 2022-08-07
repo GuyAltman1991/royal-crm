@@ -9,6 +9,7 @@ export interface Address {
 
 export interface CustomersInterface {
   _id?: string;
+  israeliId?: number;
   firstName: string;
   lastName: string;
   email: string;

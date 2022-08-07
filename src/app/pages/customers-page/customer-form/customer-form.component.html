@@ -58,6 +58,51 @@
     </div>
   </div>
 
+  <div class="row justify-content-center mt-2">
+    <div class="col-12 col-md-5 mb-2 form-group">
+      <label for="id">
+        <span class="text-danger">*</span>
+        {{ "id" | titlecase }}
+      </label>
+      <input
+        id="israeliId"
+        ngModel
+        name="israeliId"
+        type="text"
+        class="form-control"
+        required
+        minlength="7"
+        #idField="ngModel"
+        [ngClass]="{ 'is-invalid': idField.invalid && idField.touched }"
+      />
+      <span class="invalid-feedback">{{
+        "id must be at list 7 characters" | paragraphCapital
+      }}</span>
+    </div>
+    <div class="col-12 col-md-5 mb-2 form-group">
+      <label for="birthDay">
+        <span class="text-danger">*</span>
+        {{ "birthDay" | titlecase }}
+      </label>
+      <input
+        id="birthDay"
+        ngModel
+        name="birthDay"
+        type="date"
+        class="form-control"
+        required
+        minlength="6"
+        #birthDayField="ngModel"
+        [ngClass]="{
+          'is-invalid': birthDayField.invalid && birthDayField.touched
+        }"
+      />
+      <span class="invalid-feedback">{{
+        "birthDay must be at list 6 characters" | paragraphCapital
+      }}</span>
+    </div>
+  </div>
+
   <!-- דרכי התקשרות -->
   <div class="center">
     <div class="col-md-10">
@@ -209,7 +254,7 @@
       <div class="col-md-5 mb-2 form-group">
         <label for="houseNumber"
           ><span class="text-danger">*</span>
-          {{ "houseNumber" | titlecase }}</label
+          {{ "house Number" | titlecase }}</label
         ><input
           ngModel
           name="houseNumber"
@@ -293,7 +338,7 @@
       class="btn btn-success ms-3"
       [disabled]="customerForm.form.invalid"
     >
-      {{ "add contact" | titlecase }}
+      {{ "add customer" | titlecase }}
     </button>
   </div>
 </form>

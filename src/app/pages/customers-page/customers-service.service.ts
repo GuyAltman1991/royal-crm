@@ -8,6 +8,7 @@ export class CustomersServiceService {
   private customers: CustomersInterface[] = [
     {
       _id: '118154',
+      israeliId: 203225448,
       firstName: 'david',
       lastName: 'banai',
       email: 'david@gmail.com',
@@ -25,6 +26,7 @@ export class CustomersServiceService {
     },
     {
       _id: '248514',
+      israeliId: 15448754,
       firstName: 'shlomo',
       lastName: 'madrid',
       email: 'shlomo@gmail.com',
