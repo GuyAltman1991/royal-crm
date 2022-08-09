@@ -31,6 +31,8 @@ export class CustomersServiceService {
       lastName: 'madrid',
       email: 'shlomo@gmail.com',
       phone: '050-0000000',
+      birthDay: new Date('December 17, 1974'),
+      age: 55,
       address: {
         country: 'israel',
         city: 'netivot',
@@ -40,19 +42,31 @@ export class CustomersServiceService {
       },
       createdAt: new Date(),
       notes: 'angry man!',
-      age: 55,
-      birthDay: new Date('December 17, 1974'),
     },
   ];
 
   getAll(): CustomersInterface[] {
     return this.customers;
   }
+  // age:any = this.customers[0].birthDay?.toDateString
 
   add(customer: CustomersInterface) {
     customer._id = String(this.customers.length) + new Date() + Math.random();
     customer.createdAt = new Date();
+
     this.customers.push(customer);
     console.log(this.customers);
+  }
+  delete(id: string) {
+    let customerIndex = this.customers.findIndex(
+      (customer: CustomersInterface) => customer._id === id
+    );
+    if (customerIndex === -1) return;
+    this.customers.splice(customerIndex, 1);
+  }
+  getCustomer(id: string): CustomersInterface | void {
+    return this.customers.find(
+      (customer: CustomersInterface) => customer._id === id
+    );
   }
 }

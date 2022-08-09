@@ -54,4 +54,19 @@ export class ContactsServiceService {
     console.log(this.contacts);
     return;
   }
+  delete(id: string) {
+    let contactIndex = this.contacts.findIndex(
+      (contact: ContactInterface) => contact._id === id
+    );
+    if (contactIndex === -1) return;
+    this.contacts.splice(contactIndex, 1);
+  }
+
+  getContact(id: string): ContactInterface | void {
+    const contact = this.contacts.find(
+      (contact: ContactInterface) => contact._id === id
+    );
+    if (!contact) return;
+    return contact;
+  }
 }

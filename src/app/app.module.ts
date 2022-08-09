@@ -30,6 +30,8 @@ import { ContactFormComponent } from './pages/contacts/contact-form/contact-form
 import { NewCustomerComponent } from './pages/customers-page/new-customer/new-customer.component';
 import { CustomerFormComponent } from './pages/customers-page/customer-form/customer-form.component';
 import { SignupPageComponent } from './pages/signup-page/signup-page/signup-page.component';
+import { ContactDetailsComponent } from './pages/contacts/contact-details/contact-details.component';
+import { CustomerDetailsComponent } from './pages/customers-page/customer-details/customer-details.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +61,8 @@ import { SignupPageComponent } from './pages/signup-page/signup-page/signup-page
     NewCustomerComponent,
     CustomerFormComponent,
     SignupPageComponent,
+    ContactDetailsComponent,
+    CustomerDetailsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],

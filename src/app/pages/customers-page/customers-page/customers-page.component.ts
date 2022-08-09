@@ -10,7 +10,11 @@ import { CustomersServiceService } from '../customers-service.service';
 export class CustomersPageComponent {
   customers: Array<CustomersInterface> = [];
 
-  constructor(customerService: CustomersServiceService) {
+  constructor(private customerService: CustomersServiceService) {
     this.customers = customerService.getAll();
+  }
+  deleteCustomer(e: MouseEvent, id: string) {
+    e.stopPropagation();
+    this.customerService.delete(id);
   }
 }

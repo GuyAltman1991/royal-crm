@@ -28,16 +28,30 @@
       <th scope="col">Age</th>
       <th scope="col">Address</th> -->
       <th scope="col">Notes</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let contact of contacts; index as i">
+    <tr
+      *ngFor="let contact of contacts; index as i"
+      [routerLink]="['contact-details', contact._id]"
+    >
       <th scope="row">{{ i + 1 }}</th>
       <!-- <td>{{ contact._id }}</td> -->
       <td>{{ contact.firstName + " " + contact.lastName }}</td>
       <td>{{ contact.email }}</td>
       <td>{{ contact.phone }}</td>
       <td>{{ contact.notes }}</td>
+      <td>Edit</td>
+      <td>
+        <button
+          class="btn btn-outline-dark"
+          (click)="deleteContact($event, contact._id!)"
+        >
+          <i class="fas fa-trash"></i>
+        </button>
+      </td>
       <td>
         <!-- {{ contact.birthDay | date: "mediumDate" }}
       </td>

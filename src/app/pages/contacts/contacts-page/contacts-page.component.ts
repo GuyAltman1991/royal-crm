@@ -10,7 +10,11 @@ import { ContactsServiceService } from '../contacts-service.service';
 export class ContactsPageComponent {
   contacts: Array<ContactInterface> = [];
 
-  constructor(contactService: ContactsServiceService) {
+  constructor(private contactService: ContactsServiceService) {
     this.contacts = contactService.getAll();
+  }
+  deleteContact(e: MouseEvent, id: string) {
+    e.stopPropagation();
+    this.contactService.delete(id);
   }
 }
