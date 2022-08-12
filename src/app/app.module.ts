@@ -32,6 +32,7 @@ import { CustomerFormComponent } from './pages/customers-page/customer-form/cust
 import { SignupPageComponent } from './pages/signup-page/signup-page/signup-page.component';
 import { ContactDetailsComponent } from './pages/contacts/contact-details/contact-details.component';
 import { CustomerDetailsComponent } from './pages/customers-page/customer-details/customer-details.component';
+import { EditContactComponent } from './pages/contacts/edit-contact/edit-contact.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { CustomerDetailsComponent } from './pages/customers-page/customer-detail
     SignupPageComponent,
     ContactDetailsComponent,
     CustomerDetailsComponent,
+    EditContactComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],

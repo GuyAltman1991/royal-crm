@@ -54,6 +54,14 @@ export class ContactsServiceService {
     console.log(this.contacts);
     return;
   }
+
+  getContact(id: string, cb: Function): ContactInterface | void {
+    const contact = this.contacts.find(
+      (contact: ContactInterface) => contact._id === id
+    );
+    return cb(contact);
+  }
+
   delete(id: string) {
     let contactIndex = this.contacts.findIndex(
       (contact: ContactInterface) => contact._id === id
@@ -62,11 +70,12 @@ export class ContactsServiceService {
     this.contacts.splice(contactIndex, 1);
   }
 
-  getContact(id: string): ContactInterface | void {
-    const contact = this.contacts.find(
-      (contact: ContactInterface) => contact._id === id
+  edit(contact: ContactInterface) {
+    let index = this.contacts.findIndex(
+      (contactFromDb) => contactFromDb._id === contact._id
     );
-    if (!contact) return;
-    return contact;
+    if (index === -1) return;
+
+    this.contacts[index] = contact;
   }
 }

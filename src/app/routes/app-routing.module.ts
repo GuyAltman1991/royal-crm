@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AboutPageComponent } from '../pages/about-page/about-page.component';
 import { ContactDetailsComponent } from '../pages/contacts/contact-details/contact-details.component';
 import { ContactsPageComponent } from '../pages/contacts/contacts-page/contacts-page.component';
+import { EditContactComponent } from '../pages/contacts/edit-contact/edit-contact.component';
 import { NewContactComponent } from '../pages/contacts/new-contact/new-contact.component';
 import { CustomerDetailsComponent } from '../pages/customers-page/customer-details/customer-details.component';
 
@@ -25,6 +26,7 @@ const routes: Routes = [
     component: CustomerDetailsComponent,
   },
   { path: 'contacts', component: ContactsPageComponent },
+  { path: 'contacts/edit-contact/:id', component: EditContactComponent },
   { path: 'contacts/new-contact', component: NewContactComponent },
   { path: 'contacts/contact-details/:id', component: ContactDetailsComponent },
   { path: '**', component: ErrorPageComponent },

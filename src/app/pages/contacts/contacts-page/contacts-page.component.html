@@ -20,13 +20,10 @@
   <thead>
     <tr>
       <th scope="col">#</th>
-      <!-- <th scope="col">id</th> -->
       <th scope="col">Full Name</th>
       <th scope="col">Email</th>
       <th scope="col">Phone</th>
-      <!-- <th scope="col">Birthday</th>
-      <th scope="col">Age</th>
-      <th scope="col">Address</th> -->
+
       <th scope="col">Notes</th>
       <th scope="col">Edit</th>
       <th scope="col">Delete</th>
@@ -38,12 +35,19 @@
       [routerLink]="['contact-details', contact._id]"
     >
       <th scope="row">{{ i + 1 }}</th>
-      <!-- <td>{{ contact._id }}</td> -->
+
       <td>{{ contact.firstName + " " + contact.lastName }}</td>
       <td>{{ contact.email }}</td>
       <td>{{ contact.phone }}</td>
       <td>{{ contact.notes }}</td>
-      <td>Edit</td>
+      <td>
+        <a
+          class="btn btn-outline-dark"
+          [routerLink]="['edit-contact', contact._id]"
+          role="button"
+          ><i class="fas fa-pen"></i
+        ></a>
+      </td>
       <td>
         <button
           class="btn btn-outline-dark"

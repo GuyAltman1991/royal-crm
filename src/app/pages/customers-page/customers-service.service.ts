@@ -48,7 +48,6 @@ export class CustomersServiceService {
   getAll(): CustomersInterface[] {
     return this.customers;
   }
-  // age:any = this.customers[0].birthDay?.toDateString
 
   add(customer: CustomersInterface) {
     customer._id = String(this.customers.length) + new Date() + Math.random();

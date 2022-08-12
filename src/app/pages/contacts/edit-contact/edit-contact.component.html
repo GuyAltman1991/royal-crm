@@ -1,0 +1,6 @@
+<contact-form
+  *ngIf="contact"
+  [contact]="contact"
+  (submit)="onSubmit($event)"
+  (reset)="resetForm()"
+></contact-form>
