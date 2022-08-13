@@ -8,7 +8,7 @@ export class CustomersServiceService {
   private customers: CustomersInterface[] = [
     {
       _id: '118154',
-      israeliId: 203225448,
+      idCard: 203225448,
       firstName: 'david',
       lastName: 'banai',
       email: 'david@gmail.com',
@@ -26,7 +26,7 @@ export class CustomersServiceService {
     },
     {
       _id: '248514',
-      israeliId: 15448754,
+      idCard: 15448754,
       firstName: 'shlomo',
       lastName: 'madrid',
       email: 'shlomo@gmail.com',
@@ -63,9 +63,19 @@ export class CustomersServiceService {
     if (customerIndex === -1) return;
     this.customers.splice(customerIndex, 1);
   }
-  getCustomer(id: string): CustomersInterface | void {
-    return this.customers.find(
+
+  edit(customer: CustomersInterface) {
+    let index = this.customers.findIndex(
+      (customerFromDb) => customerFromDb._id === customer._id
+    );
+    if (index === -1) return;
+    this.customers[index] = customer;
+  }
+
+  getCustomer(id: string, cb: Function): CustomersInterface | void {
+    const customer = this.customers.find(
       (customer: CustomersInterface) => customer._id === id
     );
+    return cb(customer);
   }
 }

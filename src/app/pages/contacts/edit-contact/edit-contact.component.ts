@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { ActivatedRoute, ParamMap, Route, Router } from '@angular/router';
+
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { ContactInterface } from '../contact-interface';
 import { ContactsServiceService } from '../contacts-service.service';
 

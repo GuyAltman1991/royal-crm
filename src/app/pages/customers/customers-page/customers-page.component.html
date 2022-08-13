@@ -39,7 +39,7 @@
       [routerLink]="['customer-details', customer._id]"
     >
       <th scope="row">{{ i + 1 }}</th>
-      <td>{{ customer.israeliId }}</td>
+      <td>{{ customer.idCard }}</td>
       <td>{{ customer.firstName + " " + customer.lastName }}</td>
       <td>{{ customer.email }}</td>
       <td>{{ customer.phone }}</td>
@@ -53,7 +53,15 @@
       </td>
       <td>{{ this.customer.notes }}</td>
 
-      <td>Edit</td>
+      <td>
+        <a
+          class="btn btn-outline-dark"
+          [routerLink]="['edit-customer', customer._id]"
+          role="button"
+        >
+          <i class="fas fa-pen"></i
+        ></a>
+      </td>
       <td>
         <button
           class="btn btn-outline-dark"

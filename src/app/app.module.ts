@@ -19,7 +19,7 @@ import { NavLinkTopComponent } from './layout/header/nav-link-top/nav-link-top.c
 import { RandomNumPipe } from './pipes/random-num.pipe';
 import { ParagraphCapitalPipe } from './pipes/paragraph-capital.pipe';
 import { SideNavLinkComponent } from './layout/main/side-nav/side-nav-link/side-nav-link.component';
-import { CustomersPageComponent } from './pages/customers-page/customers-page/customers-page.component';
+import { CustomersPageComponent } from './pages/customers/customers-page/customers-page.component';
 import { ErrorPageComponent } from './pages/error-page/error-page.component';
 
 import { FormsModule } from '@angular/forms';
@@ -27,12 +27,13 @@ import { LoginPageComponent } from './pages/login-page/login-page/login-page.com
 import { NewContactComponent } from './pages/contacts/new-contact/new-contact.component';
 import { AboutPageComponent } from './pages/about-page/about-page.component';
 import { ContactFormComponent } from './pages/contacts/contact-form/contact-form.component';
-import { NewCustomerComponent } from './pages/customers-page/new-customer/new-customer.component';
-import { CustomerFormComponent } from './pages/customers-page/customer-form/customer-form.component';
+import { NewCustomerComponent } from './pages/customers/new-customer/new-customer.component';
+import { CustomerFormComponent } from './pages/customers/customer-form/customer-form.component';
 import { SignupPageComponent } from './pages/signup-page/signup-page/signup-page.component';
 import { ContactDetailsComponent } from './pages/contacts/contact-details/contact-details.component';
-import { CustomerDetailsComponent } from './pages/customers-page/customer-details/customer-details.component';
+import { CustomerDetailsComponent } from './pages/customers/customer-details/customer-details.component';
 import { EditContactComponent } from './pages/contacts/edit-contact/edit-contact.component';
+import { EditCustomerComponent } from './pages/customers/edit-customer/edit-customer.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { EditContactComponent } from './pages/contacts/edit-contact/edit-contact
     ContactDetailsComponent,
     CustomerDetailsComponent,
     EditContactComponent,
+    EditCustomerComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],

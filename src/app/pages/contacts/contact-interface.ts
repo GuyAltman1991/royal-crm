@@ -1,4 +1,4 @@
-import { Address } from 'src/app/pages/customers-page/customers-interface';
+import { Address } from 'src/app/pages/customers/customers-interface';
 export interface ContactInterface {
   _id?: string;
   firstName: string;

@@ -5,10 +5,11 @@ import { ContactDetailsComponent } from '../pages/contacts/contact-details/conta
 import { ContactsPageComponent } from '../pages/contacts/contacts-page/contacts-page.component';
 import { EditContactComponent } from '../pages/contacts/edit-contact/edit-contact.component';
 import { NewContactComponent } from '../pages/contacts/new-contact/new-contact.component';
-import { CustomerDetailsComponent } from '../pages/customers-page/customer-details/customer-details.component';
+import { CustomerDetailsComponent } from '../pages/customers/customer-details/customer-details.component';
 
-import { CustomersPageComponent } from '../pages/customers-page/customers-page/customers-page.component';
-import { NewCustomerComponent } from '../pages/customers-page/new-customer/new-customer.component';
+import { CustomersPageComponent } from '../pages/customers/customers-page/customers-page.component';
+import { EditCustomerComponent } from '../pages/customers/edit-customer/edit-customer.component';
+import { NewCustomerComponent } from '../pages/customers/new-customer/new-customer.component';
 import { ErrorPageComponent } from '../pages/error-page/error-page.component';
 import { LoginPageComponent } from '../pages/login-page/login-page/login-page.component';
 import { SignupPageComponent } from '../pages/signup-page/signup-page/signup-page.component';
@@ -24,6 +25,10 @@ const routes: Routes = [
   {
     path: 'customers/customer-details/:id',
     component: CustomerDetailsComponent,
+  },
+  {
+    path: 'customers/edit-customer/:id',
+    component: EditCustomerComponent,
   },
   { path: 'contacts', component: ContactsPageComponent },
   { path: 'contacts/edit-contact/:id', component: EditContactComponent },

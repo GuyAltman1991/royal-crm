@@ -1,17 +1,17 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ContactInterface } from '../contact-interface';
+import { CustomersInterface } from '../customers-interface';
 
 @Component({
-  selector: 'contact-form',
-  templateUrl: './contact-form.component.html',
+  selector: 'customer-form',
+  templateUrl: './customer-form.component.html',
   styles: [],
 })
-export class ContactFormComponent {
+export class CustomerFormComponent {
   constructor() {}
   @Output() submit = new EventEmitter();
   @Output() reset = new EventEmitter();
-  @Input() contact: ContactInterface = {
+  @Input() customer: CustomersInterface = {
     email: '',
     firstName: '',
     lastName: '',
@@ -24,16 +24,14 @@ export class ContactFormComponent {
       street: '',
       zip: 0,
     },
-    birthDay: new Date(),
-    notes: '',
+    idCard: 0,
   };
   onSubmit({ valid, value }: NgForm) {
     if (valid) {
       this.submit.emit(value);
     }
   }
-
-  resetForm(form: NgForm) {
-    form.resetForm();
+  resetForm(formName: NgForm) {
+    formName.resetForm();
   }
 }

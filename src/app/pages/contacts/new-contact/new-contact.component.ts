@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CustomersInterface } from '../../customers-page/customers-interface';
+
 import { ContactInterface } from '../contact-interface';
 import { ContactsServiceService } from '../contacts-service.service';
 

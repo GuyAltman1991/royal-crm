@@ -19,7 +19,7 @@
         {{ "first name" | titlecase }}</label
       ><input
         id="firstName"
-        ngModel
+        [(ngModel)]="customer.firstName"
         name="firstName"
         type="text"
         class="form-control"
@@ -37,10 +37,11 @@
     </div>
 
     <div class="col-md-5 mb-2 form-group">
-      <label for="zip"
+      <label for="lastName"
         ><span class="text-danger">*</span> {{ "last name" | titlecase }}</label
       ><input
-        ngModel
+        id="lastName"
+        [(ngModel)]="customer.lastName"
         #lastNameField="ngModel"
         name="lastName"
         type="text"
@@ -60,14 +61,14 @@
 
   <div class="row justify-content-center mt-2">
     <div class="col-12 col-md-5 mb-2 form-group">
-      <label for="id">
+      <label for="idCard">
         <span class="text-danger">*</span>
         {{ "id" | titlecase }}
       </label>
       <input
-        id="israeliId"
-        ngModel
-        name="israeliId"
+        id="idCard"
+        [(ngModel)]="customer.idCard"
+        name="idCard"
         type="text"
         class="form-control"
         required
@@ -86,7 +87,7 @@
       </label>
       <input
         id="birthDay"
-        ngModel
+        [(ngModel)]="customer.birthDay"
         name="birthDay"
         type="date"
         class="form-control"
@@ -116,7 +117,8 @@
       <label for="email"
         ><span class="text-danger">*</span> {{ "email" | titlecase }}</label
       ><input
-        ngModel
+        id="email"
+        [(ngModel)]="customer.email"
         #emailField="ngModel"
         name="email"
         type="email"
@@ -137,7 +139,8 @@
       <label for="phone"
         ><span class="text-danger">*</span> {{ "phone" | titlecase }}</label
       ><input
-        ngModel
+        id="phone"
+        [(ngModel)]="customer.phone"
         #phoneField="ngModel"
         name="phone"
         pattern="0[0-9]{1,2}\-?\s?[0-9]{3}\s?[0-9]{4}"
@@ -167,10 +170,11 @@
   <div ngModelGroup="address">
     <div class="row justify-content-center mt-2">
       <div class="col-md-5 mb-2 form-group">
-        <label for="firstName"
+        <label for="state"
           ><span class="text-danger"></span> {{ "state" | titlecase }}</label
         ><input
-          ngModel
+          id="state"
+          [(ngModel)]="customer.address"
           #stateField="ngModel"
           name="state"
           type="text"
@@ -189,7 +193,8 @@
         <label for="country"
           ><span class="text-danger">*</span> {{ "country" | titlecase }}</label
         ><input
-          ngModel
+          id="country"
+          [(ngModel)]="customer.address"
           #countryField="ngModel"
           name="country"
           type="text"
@@ -212,7 +217,8 @@
         <label for="city"
           ><span class="text-danger">*</span> {{ "city" | titlecase }}</label
         ><input
-          ngModel
+          id="city"
+          [(ngModel)]="customer.address"
           name="city"
           type="text"
           class="form-control"
@@ -232,7 +238,8 @@
         <label for="street"
           ><span class="text-danger">*</span> {{ "street" | titlecase }}</label
         ><input
-          ngModel
+          id="street"
+          [(ngModel)]="customer.address"
           name="street"
           type="text"
           class="form-control"
@@ -256,7 +263,8 @@
           ><span class="text-danger">*</span>
           {{ "house Number" | titlecase }}</label
         ><input
-          ngModel
+          id="houseNumber"
+          [(ngModel)]="customer.address"
           name="houseNumber"
           type="number"
           class="form-control"
@@ -276,7 +284,8 @@
         <label for="zip"
           ><span class="text-danger"></span> {{ "zip" | titlecase }}</label
         ><input
-          ngModel
+          id="zip"
+          [(ngModel)]="customer.address"
           name="zip"
           type="text"
           class="form-control"
@@ -306,7 +315,8 @@
     <div class="col-md-10 mb-2">
       <label for="notes">{{ "notes" | titlecase }}</label>
       <textarea
-        ngModel
+        id="notes"
+        [(ngModel)]="customer.notes"
         name="notes"
         class="form-control"
         cols="30"

@@ -1,0 +1,12 @@
+<app-page-header
+  title="EDIT CUSTOMER"
+  subtitle="update the details of the customer"
+  icon="fas fa-user-edit"
+></app-page-header>
+<customer-form
+  *ngIf="customer"
+  [customer]="customer"
+  (submit)="onSubmit($event)"
+  (reset)="resetForm()"
+>
+</customer-form>
