@@ -20,7 +20,7 @@ export class ContactsServiceService {
         zip: 1234,
       },
       createdAt: new Date(),
-      age: 32,
+
       birthDay: new Date('July 20, 1957'),
     },
     {
@@ -37,8 +37,8 @@ export class ContactsServiceService {
         zip: 1234,
       },
       createdAt: new Date(),
-      notes: 'a very bad contact!',
-      age: 48,
+      notes: 'Impatient!',
+
       birthDay: new Date('December 17, 1995'),
     },
   ];

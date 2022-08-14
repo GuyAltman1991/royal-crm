@@ -8,7 +8,7 @@ export class CustomersServiceService {
   private customers: CustomersInterface[] = [
     {
       _id: '118154',
-      idCard: 203225448,
+      idCard: '203225448',
       firstName: 'david',
       lastName: 'banai',
       email: 'david@gmail.com',
@@ -22,11 +22,11 @@ export class CustomersServiceService {
       },
       createdAt: new Date(),
       age: 29,
-      birthDay: new Date('October 8, 1984'),
+      birthDay: new Date('October 8, 1991'),
     },
     {
       _id: '248514',
-      idCard: 15448754,
+      idCard: '15448754',
       firstName: 'shlomo',
       lastName: 'madrid',
       email: 'shlomo@gmail.com',
@@ -41,7 +41,7 @@ export class CustomersServiceService {
         zip: 1234,
       },
       createdAt: new Date(),
-      notes: 'angry man!',
+      notes: 'nice person!',
     },
   ];
 

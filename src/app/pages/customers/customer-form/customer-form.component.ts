@@ -24,7 +24,7 @@ export class CustomerFormComponent {
       street: '',
       zip: 0,
     },
-    idCard: 0,
+    idCard: '',
   };
   onSubmit({ valid, value }: NgForm) {
     if (valid) {

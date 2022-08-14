@@ -174,7 +174,7 @@
           ><span class="text-danger"></span> {{ "state" | titlecase }}</label
         ><input
           id="state"
-          [(ngModel)]="customer.address"
+          [(ngModel)]="customer.address.state"
           #stateField="ngModel"
           name="state"
           type="text"
@@ -194,7 +194,7 @@
           ><span class="text-danger">*</span> {{ "country" | titlecase }}</label
         ><input
           id="country"
-          [(ngModel)]="customer.address"
+          [(ngModel)]="customer.address.country"
           #countryField="ngModel"
           name="country"
           type="text"
@@ -218,7 +218,7 @@
           ><span class="text-danger">*</span> {{ "city" | titlecase }}</label
         ><input
           id="city"
-          [(ngModel)]="customer.address"
+          [(ngModel)]="customer.address.city"
           name="city"
           type="text"
           class="form-control"
@@ -239,7 +239,7 @@
           ><span class="text-danger">*</span> {{ "street" | titlecase }}</label
         ><input
           id="street"
-          [(ngModel)]="customer.address"
+          [(ngModel)]="customer.address.street"
           name="street"
           type="text"
           class="form-control"
@@ -264,7 +264,7 @@
           {{ "house Number" | titlecase }}</label
         ><input
           id="houseNumber"
-          [(ngModel)]="customer.address"
+          [(ngModel)]="customer.address.houseNumber"
           name="houseNumber"
           type="number"
           class="form-control"
@@ -285,7 +285,7 @@
           ><span class="text-danger"></span> {{ "zip" | titlecase }}</label
         ><input
           id="zip"
-          [(ngModel)]="customer.address"
+          [(ngModel)]="customer.address.zip"
           name="zip"
           type="text"
           class="form-control"

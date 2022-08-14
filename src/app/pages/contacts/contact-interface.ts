@@ -6,8 +6,7 @@ export interface ContactInterface {
   email: string;
   phone: string;
   createdAt?: Date;
-  address?: Address;
+  address: Address;
   notes?: string;
   birthDay?: Date;
-  age?: number;
 }

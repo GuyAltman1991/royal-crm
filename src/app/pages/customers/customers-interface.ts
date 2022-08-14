@@ -9,13 +9,13 @@ export interface Address {
 
 export interface CustomersInterface {
   _id?: string;
-  idCard?: number;
+  idCard?: string;
   firstName: string;
   lastName: string;
   email: string;
   phone: string;
   createdAt?: Date;
-  address?: Address;
+  address: Address;
   notes?: string;
   birthDay?: Date;
   age?: number;
