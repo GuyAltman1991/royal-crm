@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CustomersInterface } from '../../customers/customers-interface';
 
 @Component({
@@ -8,13 +9,14 @@ import { CustomersInterface } from '../../customers/customers-interface';
   styles: [],
 })
 export class SignupPageComponent implements OnInit {
-  constructor() {}
+  constructor(private routerService: Router) {}
 
   ngOnInit(): void {}
 
   onSubmit({ value, valid }: NgForm) {
     console.log(value);
     console.log(valid);
+    this.routerService.navigate(['/login-page']);
   }
 
   reset(resetForm: NgForm) {
