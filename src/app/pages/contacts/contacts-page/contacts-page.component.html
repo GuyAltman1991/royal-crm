@@ -3,6 +3,7 @@
   subtitle="a contact page"
   icon="fas fa-address-book"
 ></app-page-header>
+
 <div class="mb-2">
   <a
     routerLink="new-contact"
@@ -12,6 +13,13 @@
     >{{ "add new contact" | paragraphCapital }}</a
   >
 </div>
+
+<search-bar
+  *ngIf="contacts"
+  [categories]="categories"
+  [array]="contactsData"
+  (onArrayFilterd)="onSearch($event)"
+></search-bar>
 
 <table
   *ngIf="contacts && contacts.length; else noContacts"
@@ -69,6 +77,8 @@
     </tr>
   </tbody>
 </table>
+
+<contacts-folder [contacts]="contacts"></contacts-folder>
 
 <ng-template #noContacts>
   <div>

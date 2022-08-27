@@ -35,6 +35,9 @@ import { CustomerDetailsComponent } from './pages/customers/customer-details/cus
 import { EditContactComponent } from './pages/contacts/edit-contact/edit-contact.component';
 import { EditCustomerComponent } from './pages/customers/edit-customer/edit-customer.component';
 import { CalculateAgePipe } from './pipes/calculate-age.pipe';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { ContactsFolderComponent } from './pages/contacts/contacts-display-modes/contacts-folder/contacts-folder.component';
+import { ContactsTableComponent } from './pages/contacts/contacts-display-modes/contacts-table/contacts-table.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +72,9 @@ import { CalculateAgePipe } from './pipes/calculate-age.pipe';
     EditContactComponent,
     EditCustomerComponent,
     CalculateAgePipe,
+    SearchBarComponent,
+    ContactsFolderComponent,
+    ContactsTableComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
