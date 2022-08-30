@@ -1,0 +1,65 @@
+<table
+  *ngIf="customers && customers.length; else noCustomers"
+  class="table table-striped container mt-4"
+>
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">ID</th>
+      <th scope="col">Full Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Birthday</th>
+      <th scope="col">Age</th>
+      <th scope="col">Address</th>
+      <th scope="col">Notes</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      *ngFor="let customer of customers; index as i"
+      [routerLink]="['customer-details', customer._id]"
+    >
+      <th scope="row">{{ i + 1 }}</th>
+      <td>{{ customer.idCard }}</td>
+      <td>{{ customer.firstName + " " + customer.lastName }}</td>
+      <td>{{ customer.email }}</td>
+      <td>{{ customer.phone }}</td>
+      <td>{{ customer.birthDay | date: "mediumDate" }}</td>
+      <td>{{ customer.birthDay | calculateAge }}</td>
+
+      <td>
+        {{ this.customer.address.city }}
+        {{ this.customer.address.street }}
+        {{ this.customer.address.houseNumber }}
+      </td>
+      <td>{{ this.customer.notes }}</td>
+
+      <td>
+        <a
+          class="btn btn-outline-dark"
+          [routerLink]="['edit-customer', customer._id]"
+          role="button"
+        >
+          <i class="fas fa-pen"></i
+        ></a>
+      </td>
+      <td>
+        <button
+          class="btn btn-outline-dark"
+          (click)="deleteCustomer($event, customer._id!)"
+        >
+          <i class="fas fa-trash"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #noCustomers>
+  <div>
+    {{ "opss... no customers where found in the database!" | paragraphCapital }}
+  </div>
+</ng-template>

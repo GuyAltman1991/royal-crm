@@ -38,6 +38,10 @@ import { CalculateAgePipe } from './pipes/calculate-age.pipe';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { ContactsFolderComponent } from './pages/contacts/contacts-display-modes/contacts-folder/contacts-folder.component';
 import { ContactsTableComponent } from './pages/contacts/contacts-display-modes/contacts-table/contacts-table.component';
+import { DisplayModeControllersComponent } from './components/display-mode-controllers/display-mode-controllers.component';
+import { CustomersTableComponent } from './pages/customers/customers-display-mode/customers-table/customers-table.component';
+import { CustomersFolderComponent } from './pages/customers/customers-display-mode/customers-folder/customers-folder.component';
+import { ContactsHebrewComponent } from './pages/contacts/contacts-display-modes/contacts-hebrew/contacts-hebrew.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +79,10 @@ import { ContactsTableComponent } from './pages/contacts/contacts-display-modes/
     SearchBarComponent,
     ContactsFolderComponent,
     ContactsTableComponent,
+    DisplayModeControllersComponent,
+    CustomersTableComponent,
+    CustomersFolderComponent,
+    ContactsHebrewComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],

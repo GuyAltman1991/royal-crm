@@ -114,6 +114,31 @@
     </div>
   </div>
 
+  <!-- תאריך לידה -->
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-5 mb-2 form-group">
+      <label for="birthDay">
+        <span class="text-danger">*</span>
+        {{ "birthDay" | titlecase }}
+      </label>
+      <input
+        id="birthDay"
+        [(ngModel)]="contact.birthDay"
+        name="birthDay"
+        type="date"
+        class="form-control"
+        required
+        minlength="6"
+        #birthDayField="ngModel"
+        [ngClass]="{
+          'is-invalid': birthDayField.invalid && birthDayField.touched
+        }"
+      />
+      <span class="invalid-feedback">{{
+        "birthDay must be at list 6 characters" | paragraphCapital
+      }}</span>
+    </div>
+  </div>
   <!-- כתובת -->
   <div class="center">
     <div class="col-md-10">

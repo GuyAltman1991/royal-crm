@@ -1,0 +1,53 @@
+<table
+  *ngIf="contacts && contacts.length; else noContacts"
+  class="table table-striped container mt-4"
+>
+  <thead>
+    <tr>
+      <th scope="col">מחק</th>
+      <th scope="col">ערוך</th>
+      <th scope="col">הערות</th>
+      <th scope="col">גיל</th>
+      <th scope="col">מס' טלפון</th>
+      <th scope="col">אימייל</th>
+
+      <th scope="col">שם מלא</th>
+      <th scope="col">#</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      *ngFor="let contact of contacts; index as i"
+      [routerLink]="['contact-details', contact._id]"
+    >
+      <td>
+        <button
+          class="btn btn-outline-dark"
+          (click)="deleteContact($event, contact._id!)"
+        >
+          <i class="fas fa-trash"></i>
+        </button>
+      </td>
+      <td>
+        <a
+          class="btn btn-outline-dark"
+          [routerLink]="['edit-contact', contact._id]"
+          role="button"
+          ><i class="fas fa-pen"></i
+        ></a>
+      </td>
+      <td>{{ contact.notes }}</td>
+      <td>{{ contact.birthDay | calculateAge }}</td>
+      <td>{{ contact.phone }}</td>
+      <td>{{ contact.email }}</td>
+      <td>{{ contact.firstName + " " + contact.lastName }}</td>
+      <th scope="row">{{ i + 1 }}</th>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #noContacts>
+  <div>
+    {{ "אופס.. לא מצאנו אנשי קשר ברשימה" | paragraphCapital }}
+  </div>
+</ng-template>

@@ -1,14 +1,13 @@
-import { CssSelector } from '@angular/compiler';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ContactInterface } from '../../contact-interface';
 import { ContactsServiceService } from '../../contacts-service.service';
 
 @Component({
-  selector: 'app-contacts-table',
-  templateUrl: './contacts-table.component.html',
+  selector: 'contacts-hebrew',
+  templateUrl: './contacts-hebrew.component.html',
   styles: [],
 })
-export class ContactsTableComponent implements OnInit {
+export class ContactsHebrewComponent implements OnInit {
   @Input() contacts: ContactInterface[] = [];
   @Output() onDeletContact = new EventEmitter();
 

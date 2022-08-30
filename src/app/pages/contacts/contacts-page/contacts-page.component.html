@@ -4,14 +4,21 @@
   icon="fas fa-address-book"
 ></app-page-header>
 
-<div class="mb-2">
-  <a
-    routerLink="new-contact"
-    class="btn btn-outline-dark"
-    title="Add new Contact"
-    role="button"
-    >{{ "add new contact" | paragraphCapital }}</a
-  >
+<div class="d-flex justify-content-between">
+  <div class="mb-2">
+    <a
+      routerLink="new-contact"
+      class="btn btn-outline-dark"
+      title="Add new Contact"
+      role="button"
+      >{{ "add new contact" | paragraphCapital }}</a
+    >
+  </div>
+
+  <app-display-mode-controllers
+    [controllers]="controllers"
+    (onChangeDisplay)="onChangeDisplay($event)"
+  ></app-display-mode-controllers>
 </div>
 
 <search-bar
@@ -21,64 +28,21 @@
   (onArrayFilterd)="onSearch($event)"
 ></search-bar>
 
-<table
-  *ngIf="contacts && contacts.length; else noContacts"
-  class="table table-striped container mt-4"
->
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Full Name</th>
-      <th scope="col">Email</th>
-      <th scope="col">Phone</th>
+<app-contacts-table
+  *ngIf="display === 'table'"
+  [contacts]="contacts"
+  (onDeletContact)="deleteContact($event, 'id')"
+></app-contacts-table>
 
-      <th scope="col">Notes</th>
-      <th scope="col">Edit</th>
-      <th scope="col">Delete</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr
-      *ngFor="let contact of contacts; index as i"
-      [routerLink]="['contact-details', contact._id]"
-    >
-      <th scope="row">{{ i + 1 }}</th>
+<contacts-folder
+  *ngIf="display === 'folder'"
+  [contacts]="contacts"
+></contacts-folder>
 
-      <td>{{ contact.firstName + " " + contact.lastName }}</td>
-      <td>{{ contact.email }}</td>
-      <td>{{ contact.phone }}</td>
-      <td>{{ contact.notes }}</td>
-      <td>
-        <a
-          class="btn btn-outline-dark"
-          [routerLink]="['edit-contact', contact._id]"
-          role="button"
-          ><i class="fas fa-pen"></i
-        ></a>
-      </td>
-      <td>
-        <button
-          class="btn btn-outline-dark"
-          (click)="deleteContact($event, contact._id!)"
-        >
-          <i class="fas fa-trash"></i>
-        </button>
-      </td>
-      <td>
-        <!-- {{ contact.birthDay | date: "mediumDate" }}
-      </td>
-      <td>{{ contact.age }}</td>
-      <td>
-        {{ this.contact.address?.city }}
-        {{ this.contact.address?.street }}
-        {{ this.contact.address?.houseNumber }}
-      </td> -->
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-<contacts-folder [contacts]="contacts"></contacts-folder>
+<contacts-hebrew
+  *ngIf="display === 'hebrew'"
+  [contacts]="contacts"
+></contacts-hebrew>
 
 <ng-template #noContacts>
   <div>

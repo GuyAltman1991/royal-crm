@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { ControllerInterface } from 'src/app/components/display-mode-controllers/controller-interface';
 import { CategoryInterface } from 'src/app/components/search-bar/category-interface';
 import { ContactInterface } from '../contact-interface';
 import { ContactsServiceService } from '../contacts-service.service';
@@ -8,7 +9,7 @@ import { ContactsServiceService } from '../contacts-service.service';
   templateUrl: '../contacts-page/contacts-page.component.html',
   styleUrls: ['contacts-page.component.css'],
 })
-export class ContactsPageComponent implements OnInit {
+export class ContactsPageComponent {
   contactsData: Array<ContactInterface> | void = undefined;
   contacts: Array<ContactInterface> = [];
   categories: Array<CategoryInterface> = [
@@ -19,20 +20,30 @@ export class ContactsPageComponent implements OnInit {
     { name: 'Notes', value: 'notes' },
   ];
 
-  constructor(private contactService: ContactsServiceService) {}
+  display: string = 'table';
+  controllers: ControllerInterface[] = [
+    { icon: 'fa fa-table-list', value: 'table' },
+    { icon: 'fa fa-folder', value: 'folder' },
+    { icon: 'fa-solid fa-arrow-left-long', value: 'hebrew' },
+  ];
+
+  constructor(private contactService: ContactsServiceService) {
+    this.contacts = contactService.getAll();
+    this.contactsData = this.contacts;
+  }
 
   onSearch(array: ContactInterface[]) {
     this.contacts = array;
+  }
+
+  onChangeDisplay(display: string) {
+    this.display = display;
   }
 
   deleteContact(e: MouseEvent, id: string) {
     e.stopPropagation();
     this.contactService.delete(id);
     this.contactsData = this.contactService.getAll();
-    this.contacts = [...this.contactsData];
-  }
-  ngOnInit(): void {
-    this.contactsData = this.contactService.getAll();
-    this.contacts = [...this.contactsData];
+    this.contacts = this.contactsData;
   }
 }

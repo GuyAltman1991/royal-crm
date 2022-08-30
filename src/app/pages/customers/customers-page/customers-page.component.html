@@ -4,78 +4,34 @@
   icon="fas fa-users"
 ></app-page-header>
 
-<div class="mb-2">
-  <a
-    routerLink="new-customer"
-    class="btn btn-outline-dark"
-    title="add new customer"
-    role="button"
-    >{{ "add a new customer" | paragraphCapital }}</a
-  >
+<div class="d-flex justify-content-between">
+  <div class="mb-2">
+    <a
+      routerLink="new-customer"
+      class="btn btn-outline-dark"
+      title="add new customer"
+      role="button"
+      >{{ "add a new customer" | paragraphCapital }}</a
+    >
+  </div>
+
+  <app-display-mode-controllers
+    [controllers]="controllers"
+    (onChangeDisplay)="onChangeDisplay($event)"
+  ></app-display-mode-controllers>
 </div>
 
-<table
-  *ngIf="customers && customers.length; else noCustomers"
-  class="table table-striped container mt-4"
+<search-bar
+  [categories]="categories"
+  [array]="customerData"
+  (onArrayFilterd)="onSearch($event)"
 >
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">ID</th>
-      <th scope="col">Full Name</th>
-      <th scope="col">Email</th>
-      <th scope="col">Phone</th>
-      <th scope="col">Birthday</th>
-      <th scope="col">Age</th>
-      <th scope="col">Address</th>
-      <th scope="col">Notes</th>
-      <th scope="col">Edit</th>
-      <th scope="col">Delete</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr
-      *ngFor="let customer of customers; index as i"
-      [routerLink]="['customer-details', customer._id]"
-    >
-      <th scope="row">{{ i + 1 }}</th>
-      <td>{{ customer.idCard }}</td>
-      <td>{{ customer.firstName + " " + customer.lastName }}</td>
-      <td>{{ customer.email }}</td>
-      <td>{{ customer.phone }}</td>
-      <td>{{ customer.birthDay | date: "mediumDate" }}</td>
-      <td>{{ customer.birthDay | calculateAge }}</td>
+</search-bar>
 
-      <td>
-        {{ this.customer.address.city }}
-        {{ this.customer.address.street }}
-        {{ this.customer.address.houseNumber }}
-      </td>
-      <td>{{ this.customer.notes }}</td>
+<app-customers-table [customers]="customers" *ngIf="display === 'table'">
+</app-customers-table>
 
-      <td>
-        <a
-          class="btn btn-outline-dark"
-          [routerLink]="['edit-customer', customer._id]"
-          role="button"
-        >
-          <i class="fas fa-pen"></i
-        ></a>
-      </td>
-      <td>
-        <button
-          class="btn btn-outline-dark"
-          (click)="deleteCustomer($event, customer._id!)"
-        >
-          <i class="fas fa-trash"></i>
-        </button>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-<ng-template #noCustomers>
-  <div>
-    {{ "opss... no customers where found in the database!" | paragraphCapital }}
-  </div>
-</ng-template>
+<customers-folder
+  [customers]="customers"
+  *ngIf="display === 'folder'"
+></customers-folder>
