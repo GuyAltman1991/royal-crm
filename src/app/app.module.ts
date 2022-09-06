@@ -42,6 +42,10 @@ import { DisplayModeControllersComponent } from './components/display-mode-contr
 import { CustomersTableComponent } from './pages/customers/customers-display-mode/customers-table/customers-table.component';
 import { CustomersFolderComponent } from './pages/customers/customers-display-mode/customers-folder/customers-folder.component';
 import { ContactsHebrewComponent } from './pages/contacts/contacts-display-modes/contacts-hebrew/contacts-hebrew.component';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [
@@ -84,7 +88,7 @@ import { ContactsHebrewComponent } from './pages/contacts/contacts-display-modes
     CustomersFolderComponent,
     ContactsHebrewComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, provideFirebaseApp(() => initializeApp(environment.firebase)), provideAuth(() => getAuth()), provideFirestore(() => getFirestore())],
   providers: [],
   bootstrap: [AppComponent],
 })

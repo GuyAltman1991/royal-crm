@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "royal-crm-guyaltman": {
+      "hosting": {
+        "royal-crm": [
+          "royal-crm-guyaltman"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "royal-crm-guyaltman"
+  }
+}

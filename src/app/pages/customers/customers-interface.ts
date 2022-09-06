@@ -14,9 +14,9 @@ export interface CustomersInterface {
   lastName: string;
   email: string;
   phone: string;
-  createdAt?: Date;
+  createdAt?: any;
   address: Address;
   notes?: string;
-  birthDay?: Date;
+  birthDay?: any;
   age?: number;
 }

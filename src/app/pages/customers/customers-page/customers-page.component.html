@@ -22,6 +22,7 @@
 </div>
 
 <search-bar
+  *ngIf="customerData && customerData.length"
   [categories]="categories"
   [array]="customerData"
   (onArrayFilterd)="onSearch($event)"

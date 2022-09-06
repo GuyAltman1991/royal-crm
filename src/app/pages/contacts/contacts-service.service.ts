@@ -1,4 +1,11 @@
 import { Injectable } from '@angular/core';
+import {
+  collection,
+  CollectionReference,
+  DocumentData,
+  Firestore,
+  onSnapshot,
+} from '@angular/fire/firestore';
 
 import { ContactInterface } from './contact-interface';
 @Injectable({
@@ -43,9 +50,26 @@ export class ContactsServiceService {
     },
   ];
 
+  collectionRef: CollectionReference<DocumentData> = collection(
+    this.FS,
+    'contacts'
+  );
+
+  // getAll() {
+  //   let contacts: any = [];
+  //   onSnapshot(this.collectionRef, (snapShotData) => {
+  //     snapShotData.docs.forEach((contact) => {
+  //       contacts.push({ ...contact.data(), _id: contact.id });
+  //     });
+  //   });
+  //   return contacts;
+  // }
+
   getAll(): ContactInterface[] {
     return this.contacts;
   }
+
+  constructor(private FS: Firestore) {}
 
   add(contact: ContactInterface) {
     contact._id = String(this.contacts.length) + new Date() + Math.random();

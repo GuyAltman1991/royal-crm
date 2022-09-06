@@ -9,6 +9,7 @@ import { CustomersServiceService } from '../customers-service.service';
   styles: [],
 })
 export class CustomerDetailsComponent implements OnInit {
+  createdAt: any;
   customer: CustomersInterface | void = undefined;
   constructor(
     private router: ActivatedRoute,
@@ -18,13 +19,10 @@ export class CustomerDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.router.paramMap.subscribe((param: ParamMap) => {
       const id = param.get('id');
-      const customer = this.CS.getCustomer(
-        id!,
-        (customer: CustomersInterface | void) => {
-          return (this.customer = customer);
-        }
-      );
-      if (customer) this.customer = customer;
+      this.CS.getCustomer(id!, (customer: CustomersInterface) => {
+        this.customer = customer;
+        this.createdAt = new Date(customer.createdAt.seconds * 1000);
+      });
     });
   }
 }

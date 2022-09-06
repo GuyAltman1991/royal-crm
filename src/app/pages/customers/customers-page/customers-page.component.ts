@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ControllerInterface } from 'src/app/components/display-mode-controllers/controller-interface';
 import { CategoryInterface } from 'src/app/components/search-bar/category-interface';
 import { CustomersInterface } from '../customers-interface';
@@ -9,7 +9,7 @@ import { CustomersServiceService } from '../customers-service.service';
   templateUrl: './customers-page.component.html',
   styles: [],
 })
-export class CustomersPageComponent {
+export class CustomersPageComponent implements OnInit {
   customers: Array<CustomersInterface> = [];
   customerData: CustomersInterface[] = [];
   categories: Array<CategoryInterface> = [
@@ -19,16 +19,14 @@ export class CustomersPageComponent {
     { name: 'Phone', value: 'phone' },
     { name: 'id Card', value: 'idCard' },
   ];
-  constructor(private customerService: CustomersServiceService) {
-    this.customers = customerService.getAll();
-    this.customerData = this.customers;
-  }
+  constructor(private customerService: CustomersServiceService) {}
 
-  display: string = 'table';
   controllers: Array<ControllerInterface> = [
     { icon: 'fa fa-table-list', value: 'table' },
     { icon: 'fa fa-folder', value: 'folder' },
   ];
+
+  display: string = 'table';
 
   onSearch(array: CustomersInterface[]) {
     this.customers = array;
@@ -41,6 +39,11 @@ export class CustomersPageComponent {
   deleteCustomer(e: MouseEvent, id: string) {
     e.stopPropagation();
     this.customerService.delete(id);
+    this.customerData = this.customerService.getAll();
+    this.customers = this.customerData;
+  }
+
+  ngOnInit() {
     this.customerData = this.customerService.getAll();
     this.customers = this.customerData;
   }

@@ -21,16 +21,16 @@ export class EditCustomerComponent implements OnInit {
 
   onSubmit(customer: CustomersInterface) {
     customer.createdAt = this.createdAt;
-    customer._id = this.id!;
-    this.CS.edit(customer);
-    this.router.navigate(['/customers']);
+    // customer._id = this.id!;
+    this.CS.edit(customer, this.id!, () =>
+      this.router.navigate(['/customers'])
+    );
   }
 
   resetForm() {
-    this.CS.getCustomer(
-      this.id!,
-      (customer: CustomersInterface) => (this.customer = customer)
-    );
+    this.CS.getCustomer(this.id!, (customer: CustomersInterface) => {
+      this.customer = customer;
+    });
   }
 
   ngOnInit(): void {
