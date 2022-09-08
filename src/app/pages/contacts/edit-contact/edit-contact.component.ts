@@ -21,9 +21,8 @@ export class EditContactComponent implements OnInit {
 
   onSubmit(contact: ContactInterface) {
     contact.createdAt = this.createdAt;
-    contact._id = this.id!;
-    this.CS.edit(contact);
-    this.router.navigate(['/contacts']);
+    // contact._id = this.id!;
+    this.CS.edit(contact, this.id!, () => this.router.navigate(['/contacts']));
   }
 
   resetForm() {

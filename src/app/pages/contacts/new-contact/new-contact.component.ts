@@ -16,7 +16,8 @@ export class NewContactComponent {
   ) {}
 
   onSubmit(contact: ContactInterface) {
-    this.CS.add(contact);
-    this.routerService.navigate(['/contacts']);
+    this.CS.add(contact, () => {
+      this.routerService.navigate(['/contacts']);
+    });
   }
 }

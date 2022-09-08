@@ -1,11 +1,16 @@
 import { Injectable } from '@angular/core';
 import {
+  addDoc,
   collection,
   CollectionReference,
+  deleteDoc,
+  doc,
   DocumentData,
   Firestore,
   onSnapshot,
+  serverTimestamp,
 } from '@angular/fire/firestore';
+import { updateDoc } from '@firebase/firestore';
 
 import { ContactInterface } from './contact-interface';
 @Injectable({
@@ -55,28 +60,28 @@ export class ContactsServiceService {
     'contacts'
   );
 
-  // getAll() {
-  //   let contacts: any = [];
-  //   onSnapshot(this.collectionRef, (snapShotData) => {
-  //     snapShotData.docs.forEach((contact) => {
-  //       contacts.push({ ...contact.data(), _id: contact.id });
-  //     });
-  //   });
-  //   return contacts;
-  // }
-
   getAll(): ContactInterface[] {
-    return this.contacts;
+    let contacts: any = [];
+    onSnapshot(this.collectionRef, (snapShotData) => {
+      snapShotData.docs.forEach((contact) => {
+        contacts.push({
+          ...contact.data(),
+          _id: contact.id,
+        });
+      });
+    });
+    return contacts;
   }
 
   constructor(private FS: Firestore) {}
 
-  add(contact: ContactInterface) {
-    contact._id = String(this.contacts.length) + new Date() + Math.random();
-    contact.createdAt = new Date();
-    this.contacts.push(contact);
-    console.log(this.contacts);
-    return;
+  add(contact: ContactInterface, cb: Function) {
+    contact.createdAt = serverTimestamp();
+    console.log(contact);
+
+    addDoc(this.collectionRef, contact)
+      .then(() => cb())
+      .catch((error) => console.log(error));
   }
 
   getContact(id: string, cb: Function): ContactInterface | void {
@@ -87,19 +92,21 @@ export class ContactsServiceService {
   }
 
   delete(id: string) {
-    let contactIndex = this.contacts.findIndex(
-      (contact: ContactInterface) => contact._id === id
-    );
-    if (contactIndex === -1) return;
-    this.contacts.splice(contactIndex, 1);
+    const docRef = doc(this.FS, 'contacts', id);
+    deleteDoc(docRef).catch((error) => console.log(error));
   }
 
-  edit(contact: ContactInterface) {
-    let index = this.contacts.findIndex(
-      (contactFromDb) => contactFromDb._id === contact._id
-    );
-    if (index === -1) return;
+  edit(contact: ContactInterface, id: string, cb: Function) {
+    const docRef = doc(this.FS, 'contacts', id);
+    updateDoc(docRef, { ...contact })
+      .then(() => cb())
+      .catch((error) => console.log(error));
 
-    this.contacts[index] = contact;
+    // let index = this.contacts.findIndex(
+    //   (contactFromDb) => contactFromDb._id === contact._id
+    // );
+    // if (index === -1) return;
+
+    // this.contacts[index] = contact;
   }
 }
