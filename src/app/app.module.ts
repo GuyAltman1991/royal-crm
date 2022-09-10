@@ -29,7 +29,7 @@ import { AboutPageComponent } from './pages/about-page/about-page.component';
 import { ContactFormComponent } from './pages/contacts/contact-form/contact-form.component';
 import { NewCustomerComponent } from './pages/customers/new-customer/new-customer.component';
 import { CustomerFormComponent } from './pages/customers/customer-form/customer-form.component';
-import { SignupPageComponent } from './pages/signup-page/signup-page/signup-page.component';
+import { SignupPageComponent } from './pages/Users/signup-page/signup-page.component';
 import { ContactDetailsComponent } from './pages/contacts/contact-details/contact-details.component';
 import { CustomerDetailsComponent } from './pages/customers/customer-details/customer-details.component';
 import { EditContactComponent } from './pages/contacts/edit-contact/edit-contact.component';
@@ -42,10 +42,10 @@ import { DisplayModeControllersComponent } from './components/display-mode-contr
 import { CustomersTableComponent } from './pages/customers/customers-display-mode/customers-table/customers-table.component';
 import { CustomersFolderComponent } from './pages/customers/customers-display-mode/customers-folder/customers-folder.component';
 import { ContactsHebrewComponent } from './pages/contacts/contacts-display-modes/contacts-hebrew/contacts-hebrew.component';
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
-import { provideAuth,getAuth } from '@angular/fire/auth';
-import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [
@@ -88,7 +88,14 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
     CustomersFolderComponent,
     ContactsHebrewComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, provideFirebaseApp(() => initializeApp(environment.firebase)), provideAuth(() => getAuth()), provideFirestore(() => getFirestore())],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

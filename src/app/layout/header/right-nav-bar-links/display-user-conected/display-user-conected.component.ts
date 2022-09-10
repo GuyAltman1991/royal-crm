@@ -1,16 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { UserService } from 'src/app/pages/Users/user.service';
 
 @Component({
   selector: 'app-display-user-conected',
   templateUrl: './display-user-conected.component.html',
-  styles: [
-  ]
+  styles: [],
 })
-export class DisplayUserConectedComponent implements OnInit {
+export class DisplayUserConectedComponent {
+  constructor(private US: UserService) {}
 
-  constructor() { }
+  connected: boolean = false;
 
-  ngOnInit(): void {
+  logOut() {
+    this.US.logOut();
   }
-
 }

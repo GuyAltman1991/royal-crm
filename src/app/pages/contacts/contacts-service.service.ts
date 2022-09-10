@@ -7,6 +7,7 @@ import {
   doc,
   DocumentData,
   Firestore,
+  getDoc,
   onSnapshot,
   serverTimestamp,
 } from '@angular/fire/firestore';
@@ -84,13 +85,6 @@ export class ContactsServiceService {
       .catch((error) => console.log(error));
   }
 
-  getContact(id: string, cb: Function): ContactInterface | void {
-    const contact = this.contacts.find(
-      (contact: ContactInterface) => contact._id === id
-    );
-    return cb(contact);
-  }
-
   delete(id: string) {
     const docRef = doc(this.FS, 'contacts', id);
     deleteDoc(docRef).catch((error) => console.log(error));
@@ -101,12 +95,17 @@ export class ContactsServiceService {
     updateDoc(docRef, { ...contact })
       .then(() => cb())
       .catch((error) => console.log(error));
+  }
 
-    // let index = this.contacts.findIndex(
-    //   (contactFromDb) => contactFromDb._id === contact._id
-    // );
-    // if (index === -1) return;
-
-    // this.contacts[index] = contact;
+  async getContact(id: string, cb: Function) {
+    try {
+      const docRef = doc(this.FS, 'contacts', id);
+      const result = await getDoc(docRef);
+      const contact = { ...result.data(), _id: result.id };
+      cb(contact);
+      console.log(contact);
+    } catch (error) {
+      console.log(error);
+    }
   }
 }

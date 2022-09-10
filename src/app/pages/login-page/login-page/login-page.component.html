@@ -55,6 +55,7 @@
       <span class="invalid-feedback"
         >{{ "please enter a valid password" | paragraphCapital }}
       </span>
+      <span *ngIf="error">{{ "error" | titlecase }}</span>
     </div>
 
     <input

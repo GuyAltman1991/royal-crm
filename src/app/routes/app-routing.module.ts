@@ -12,7 +12,7 @@ import { EditCustomerComponent } from '../pages/customers/edit-customer/edit-cus
 import { NewCustomerComponent } from '../pages/customers/new-customer/new-customer.component';
 import { ErrorPageComponent } from '../pages/error-page/error-page.component';
 import { LoginPageComponent } from '../pages/login-page/login-page/login-page.component';
-import { SignupPageComponent } from '../pages/signup-page/signup-page/signup-page.component';
+import { SignupPageComponent } from '../pages/Users/signup-page/signup-page.component';
 
 const routes: Routes = [
   { path: '', component: LoginPageComponent },

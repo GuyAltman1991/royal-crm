@@ -10,18 +10,17 @@ import { ContactsServiceService } from '../contacts-service.service';
   styles: [],
 })
 export class ContactDetailsComponent implements OnInit, OnDestroy {
+  createdAt: any;
   contact: ContactInterface | void = undefined;
   constructor(private AR: ActivatedRoute, private CS: ContactsServiceService) {}
 
   ngOnInit(): void {
     this.AR.paramMap.subscribe((param: ParamMap) => {
       const id = param.get('id');
-      this.contact = this.CS.getContact(
-        id!,
-        (contact: ContactInterface | void) => {
-          return (this.contact = contact);
-        }
-      );
+      this.CS.getContact(id!, (contact: ContactInterface) => {
+        this.contact = contact;
+        this.createdAt = new Date(contact.createdAt.seconds * 1000);
+      });
     });
   }
   ngOnDestroy(): void {}
