@@ -15,7 +15,7 @@ export class LoginPageComponent {
   counter: number = 0;
   threeFailedAttemptsToLogin: boolean = false;
 
-  constructor(private US: UserService, private router: Router) {}
+  constructor(public US: UserService, private router: Router) {}
 
   onSubmit(form: NgForm) {
     const { value, valid } = form;

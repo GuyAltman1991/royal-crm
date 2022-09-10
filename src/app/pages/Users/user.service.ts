@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import {
   Auth,
   createUserWithEmailAndPassword,
+  GoogleAuthProvider,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
 } from '@angular/fire/auth';
 import { Router } from '@angular/router';
@@ -12,7 +14,11 @@ import { LoginInterface } from '../login-page/login-interface';
   providedIn: 'root',
 })
 export class UserService {
-  constructor(private auth: Auth, private router: Router) {}
+  constructor(
+    private auth: Auth,
+
+    private router: Router
+  ) {}
 
   signupWithEmailAndPassword(user: SignUpInterface, cb: Function) {
     const { email, password } = user;
@@ -43,6 +49,24 @@ export class UserService {
         cb(credentials);
       })
       .catch(() => cb(null));
+  }
+
+  // ////// GOOGLE /////// //
+  GoogleAuth() {
+    return this.AuthLogin(new GoogleAuthProvider());
+  }
+
+  AuthLogin(user: any) {
+    this.auth;
+    signInWithPopup(this.auth, user)
+      .then((credentials) => {
+        console.log('You have been successfully logged in!');
+        console.log(credentials);
+        this.router.navigate(['customers']);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 }
 

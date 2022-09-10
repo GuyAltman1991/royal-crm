@@ -72,5 +72,14 @@
     >
       {{ "submit" | titlecase }}
     </button>
+
+    <input
+      type="button"
+      value="signin With Google"
+      class="btn btn-outline-dark col-12 my-2"
+      role="button"
+      title="Login with google"
+      (click)="US.GoogleAuth()"
+    />
   </form>
 </div>
