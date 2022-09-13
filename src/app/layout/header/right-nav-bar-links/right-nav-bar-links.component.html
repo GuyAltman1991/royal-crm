@@ -1,4 +1,8 @@
 <div class="text-light">
-  <app-display-user-conected></app-display-user-conected>
-  <app-display-user-disconected></app-display-user-disconected>
+  <app-display-user-disconected
+    *ngIf="!user; else login"
+  ></app-display-user-disconected>
+  <ng-template #login>
+    <app-display-user-conected></app-display-user-conected>
+  </ng-template>
 </div>

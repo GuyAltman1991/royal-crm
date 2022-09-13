@@ -36,6 +36,12 @@ export class SignupPageComponent {
     console.log(valid);
   }
 
+  signUpWithGoogle() {
+    this.US.signUpAndLoginWithGoogle((user: any): any => {
+      if (user) return this.routerService.navigate(['/customers']);
+    });
+  }
+
   resetForm(form: NgForm) {
     form.resetForm();
   }

@@ -66,6 +66,7 @@ export class CustomersServiceService {
 
   getAll() {
     let customers: any = [];
+    // JSON.parse(JSON.stringify(this.customers));
     onSnapshot(this.collectionRef, (snapShotData) => {
       snapShotData.docs.forEach((customer) => {
         customers.push({

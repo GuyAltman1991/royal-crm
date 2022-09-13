@@ -25,6 +25,7 @@ export class CustomerFormComponent {
       zip: 0,
     },
     idCard: '',
+    notes: '',
   };
 
   @Input() btnText: string = 'submit';

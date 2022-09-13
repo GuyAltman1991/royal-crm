@@ -13,27 +13,66 @@ import { NewCustomerComponent } from '../pages/customers/new-customer/new-custom
 import { ErrorPageComponent } from '../pages/error-page/error-page.component';
 import { LoginPageComponent } from '../pages/login-page/login-page/login-page.component';
 import { SignupPageComponent } from '../pages/Users/signup-page/signup-page.component';
+import { AuthGuard } from './auth.guard';
+import { LoggedGuard } from './logged.guard';
 
 const routes: Routes = [
   { path: '', component: LoginPageComponent },
-  { path: 'login-page', component: LoginPageComponent },
-  { path: 'logout-page', component: LoginPageComponent },
-  { path: 'signup-page', component: SignupPageComponent },
+  {
+    path: 'login-page',
+    component: LoginPageComponent,
+    // canActivate: [LoggedGuard],
+  },
+  {
+    path: 'logout-page',
+    component: LoginPageComponent,
+  },
+  {
+    path: 'signup-page',
+    component: SignupPageComponent,
+    // canActivate: [LoggedGuard],
+  },
   { path: 'about-page', component: AboutPageComponent },
-  { path: 'customers', component: CustomersPageComponent },
-  { path: 'customers/new-customer', component: NewCustomerComponent },
+  {
+    path: 'customers',
+    component: CustomersPageComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'customers/new-customer',
+    component: NewCustomerComponent,
+    canActivate: [AuthGuard],
+  },
   {
     path: 'customers/customer-details/:id',
     component: CustomerDetailsComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'customers/edit-customer/:id',
     component: EditCustomerComponent,
+    canActivate: [AuthGuard],
   },
-  { path: 'contacts', component: ContactsPageComponent },
-  { path: 'contacts/edit-contact/:id', component: EditContactComponent },
-  { path: 'contacts/new-contact', component: NewContactComponent },
-  { path: 'contacts/contact-details/:id', component: ContactDetailsComponent },
+  {
+    path: 'contacts',
+    component: ContactsPageComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'contacts/edit-contact/:id',
+    component: EditContactComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'contacts/new-contact',
+    component: NewContactComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'contacts/contact-details/:id',
+    component: ContactDetailsComponent,
+    canActivate: [AuthGuard],
+  },
   { path: '**', component: ErrorPageComponent },
 ];
 

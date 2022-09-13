@@ -3,6 +3,7 @@ import {
   Auth,
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
+  onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
@@ -51,22 +52,21 @@ export class UserService {
       .catch(() => cb(null));
   }
 
-  // ////// GOOGLE /////// //
-  GoogleAuth() {
-    return this.AuthLogin(new GoogleAuthProvider());
+  // ////// GOOGLE login/signup /////// //
+
+  signUpAndLoginWithGoogle(cb: Function) {
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(this.auth, provider)
+      .then((data) => {
+        console.log('loged succefully with google');
+        cb(data);
+      })
+      .catch(() => cb(null));
   }
 
-  AuthLogin(user: any) {
-    this.auth;
-    signInWithPopup(this.auth, user)
-      .then((credentials) => {
-        console.log('You have been successfully logged in!');
-        console.log(credentials);
-        this.router.navigate(['customers']);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  // Check user status //
+  getUserStatus(cb: Function) {
+    return onAuthStateChanged(this.auth, (user) => cb(user));
   }
 }
 

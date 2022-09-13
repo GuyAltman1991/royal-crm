@@ -2,7 +2,7 @@
   icon="fa-solid fa-sign-in"
   title="Login Page"
   subtitle="This is the login page"
-  bgColor="alert-secondary rounded-3 p-2"
+  bgColor="alert-success rounded-3 p-2"
 ></app-page-header>
 
 <div class="center mt-4">
@@ -58,6 +58,11 @@
       <span *ngIf="error">{{ "error" | titlecase }}</span>
     </div>
 
+    <div class="col-12 mb-2 text-center">
+      Did not signup yet?
+      <a routerLink="signup-page" class="fw-bold">Click here...</a>
+    </div>
+
     <input
       type="button"
       (click)="resetForm(loginForm)"
@@ -79,7 +84,7 @@
       class="btn btn-outline-dark col-12 my-2"
       role="button"
       title="Login with google"
-      (click)="US.GoogleAuth()"
+      (click)="loginUpWithGoogle()"
     />
   </form>
 </div>

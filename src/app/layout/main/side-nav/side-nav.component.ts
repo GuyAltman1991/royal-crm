@@ -1,4 +1,5 @@
 import { Component, Output } from '@angular/core';
+import { UserService } from 'src/app/pages/Users/user.service';
 import { SideNavLinkInterface } from './side-nav-link/side-nav-link-interface';
 
 @Component({
@@ -11,4 +12,5 @@ export class SideNavComponent {
     { icon: 'fas fa-users', text: 'customers', link: 'customers' },
     { icon: 'fas fa-address-book', text: 'contacts', link: 'contacts' },
   ];
+  ngOnInit() {}
 }

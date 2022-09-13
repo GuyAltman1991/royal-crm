@@ -11,6 +11,7 @@ import { CustomersServiceService } from '../customers-service.service';
 })
 export class CustomersPageComponent implements OnInit {
   customers: Array<CustomersInterface> = [];
+
   customerData: CustomersInterface[] = [];
   categories: Array<CategoryInterface> = [
     { name: 'First Name', value: 'firstName' },

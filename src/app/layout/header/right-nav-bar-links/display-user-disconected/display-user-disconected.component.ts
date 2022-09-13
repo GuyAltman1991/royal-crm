@@ -3,14 +3,10 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-display-user-disconected',
   templateUrl: './display-user-disconected.component.html',
-  styles: [
-  ]
+  styles: [],
 })
 export class DisplayUserDisconectedComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
