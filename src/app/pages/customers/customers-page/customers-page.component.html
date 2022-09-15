@@ -4,35 +4,39 @@
   icon="fas fa-users"
 ></app-page-header>
 
-<div class="d-flex justify-content-between">
-  <div class="mb-2">
-    <a
-      routerLink="new-customer"
-      class="btn btn-outline-dark"
-      title="add new customer"
-      role="button"
-      >{{ "add a new customer" | paragraphCapital }}</a
-    >
+<div *ngIf="dataRecived; else loader">
+  <div class="d-flex justify-content-between">
+    <div class="mb-2">
+      <a
+        routerLink="new-customer"
+        class="btn btn-outline-dark"
+        title="add new customer"
+        role="button"
+        >{{ "add a new customer" | paragraphCapital }}</a
+      >
+    </div>
+
+    <app-display-mode-controllers
+      [controllers]="controllers"
+      (onChangeDisplay)="onChangeDisplay($event)"
+    ></app-display-mode-controllers>
   </div>
 
-  <app-display-mode-controllers
-    [controllers]="controllers"
-    (onChangeDisplay)="onChangeDisplay($event)"
-  ></app-display-mode-controllers>
+  <search-bar
+    *ngIf="customerData && customerData.length"
+    [categories]="categories"
+    [array]="customerData"
+    (onArrayFilterd)="onSearch($event)"
+  >
+  </search-bar>
+
+  <app-customers-table [customers]="customers" *ngIf="display === 'table'">
+  </app-customers-table>
+
+  <customers-folder
+    [customers]="customers"
+    *ngIf="display === 'folder'"
+  ></customers-folder>
 </div>
 
-<search-bar
-  *ngIf="customerData && customerData.length"
-  [categories]="categories"
-  [array]="customerData"
-  (onArrayFilterd)="onSearch($event)"
->
-</search-bar>
-
-<app-customers-table [customers]="customers" *ngIf="display === 'table'">
-</app-customers-table>
-
-<customers-folder
-  [customers]="customers"
-  *ngIf="display === 'folder'"
-></customers-folder>
+<ng-template #loader><app-loader></app-loader></ng-template>

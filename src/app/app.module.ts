@@ -46,6 +46,7 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -87,6 +88,7 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
     CustomersTableComponent,
     CustomersFolderComponent,
     ContactsHebrewComponent,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,

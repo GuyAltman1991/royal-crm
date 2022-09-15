@@ -28,6 +28,8 @@ export class CustomersPageComponent implements OnInit {
   ];
 
   display: string = 'table';
+  dataRecived: boolean = false;
+  unsubscribeGetAll: Function = () => {};
 
   onSearch(array: CustomersInterface[]) {
     this.customers = array;
@@ -40,12 +42,22 @@ export class CustomersPageComponent implements OnInit {
   deleteCustomer(e: MouseEvent, id: string) {
     e.stopPropagation();
     this.customerService.delete(id);
-    this.customerData = this.customerService.getAll();
+    this.customerData = this.customerService.getAll(() => {});
     this.customers = this.customerData;
   }
 
   ngOnInit() {
-    this.customerData = this.customerService.getAll();
-    this.customers = this.customerData;
+    this.customerService.getAll(
+      (customers: CustomersInterface[], unsubscribeGetAll: Function) => {
+        this.customerData = customers;
+        this.customers = this.customerData;
+        this.dataRecived = true;
+        this.unsubscribeGetAll = unsubscribeGetAll;
+      }
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribeGetAll();
   }
 }

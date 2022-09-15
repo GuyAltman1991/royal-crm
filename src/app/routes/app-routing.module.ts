@@ -21,7 +21,7 @@ const routes: Routes = [
   {
     path: 'login-page',
     component: LoginPageComponent,
-    // canActivate: [LoggedGuard],
+    canActivate: [LoggedGuard],
   },
   {
     path: 'logout-page',
@@ -30,7 +30,7 @@ const routes: Routes = [
   {
     path: 'signup-page',
     component: SignupPageComponent,
-    // canActivate: [LoggedGuard],
+    canActivate: [LoggedGuard],
   },
   { path: 'about-page', component: AboutPageComponent },
   {

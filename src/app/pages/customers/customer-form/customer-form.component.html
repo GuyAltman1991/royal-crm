@@ -72,7 +72,8 @@
         type="text"
         class="form-control"
         required
-        minlength="7"
+        minlength="5"
+        maxlength="9"
         #idField="ngModel"
         [ngClass]="{ 'is-invalid': idField.invalid && idField.touched }"
       />
