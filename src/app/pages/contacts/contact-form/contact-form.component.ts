@@ -34,6 +34,6 @@ export class ContactFormComponent {
   }
 
   resetForm(form: NgForm) {
-    form.resetForm();
+    this.reset.emit();
   }
 }

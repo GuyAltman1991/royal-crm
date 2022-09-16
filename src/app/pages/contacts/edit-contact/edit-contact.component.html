@@ -4,8 +4,9 @@
   icon="fas fa-user-edit"
 ></app-page-header>
 <contact-form
-  *ngIf="contact"
+  *ngIf="contact; else noContact"
   [contact]="contact"
   (submit)="onSubmit($event)"
   (reset)="resetForm()"
 ></contact-form>
+<ng-template #noContact>no contacts where found</ng-template>

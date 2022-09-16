@@ -13,6 +13,8 @@ export class EditContactComponent implements OnInit {
   contact: ContactInterface | void = undefined;
   id: string | null = null;
   createdAt: any;
+  dataReceived: boolean = false;
+
   constructor(
     private CS: ContactsServiceService,
     private router: Router,
@@ -21,15 +23,14 @@ export class EditContactComponent implements OnInit {
 
   onSubmit(contact: ContactInterface) {
     contact.createdAt = this.createdAt;
-    // contact._id = this.id!;
+
     this.CS.edit(contact, this.id!, () => this.router.navigate(['/contacts']));
   }
 
   resetForm() {
-    this.CS.getContact(
-      this.id!,
-      (contact: ContactInterface) => (this.contact = contact)
-    );
+    this.CS.getContact(this.id!, (contact: ContactInterface) => {
+      this.contact = contact;
+    });
   }
 
   ngOnInit(): void {
@@ -40,6 +41,7 @@ export class EditContactComponent implements OnInit {
       this.CS.getContact(id!, (contact: ContactInterface) => {
         this.contact = contact;
         this.createdAt = contact.createdAt;
+        this.dataReceived = true;
       });
     });
   }
