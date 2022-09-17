@@ -15,10 +15,10 @@ export class LoggedGuard implements CanActivate {
   constructor(private US: UserService, private router: Router) {}
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     this.US.getUserStatus((user: any) => {
-      !user ? (this.isLogged = false) : (this.isLogged = true);
+      user ? this.router.navigate(['/cutomers']) : (this.isLogged = user);
     });
-    if (!this.isLogged) return true;
-    this.router.navigate(['**']);
-    return false;
+    if (this.isLogged) return false;
+
+    return true;
   }
 }

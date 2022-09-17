@@ -61,9 +61,9 @@ export class ContactsServiceService {
     'contacts'
   );
 
-  getAll(): ContactInterface[] {
+  getAll(cb: Function) {
     let contacts: any = [];
-    onSnapshot(this.collectionRef, (snapShotData) => {
+    const unsubscribeGetAll = onSnapshot(this.collectionRef, (snapShotData) => {
       snapShotData.docs.forEach((contact) => {
         contacts.push({
           ...contact.data(),
@@ -71,7 +71,7 @@ export class ContactsServiceService {
         });
       });
     });
-    return contacts;
+    return cb(contacts, unsubscribeGetAll);
   }
 
   constructor(private FS: Firestore) {}

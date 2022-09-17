@@ -16,7 +16,7 @@ export class ContactsHebrewComponent implements OnInit {
   deleteContact(e: MouseEvent, id: string) {
     e.stopPropagation();
     this.CS.delete(id);
-    this.onDeletContact.emit(this.CS.getAll());
+    this.onDeletContact.emit(this.CS.getAll(() => {}));
   }
 
   ngOnInit(): void {}

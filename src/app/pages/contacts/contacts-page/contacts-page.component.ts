@@ -10,7 +10,7 @@ import { ContactsServiceService } from '../contacts-service.service';
   styleUrls: ['contacts-page.component.css'],
 })
 export class ContactsPageComponent {
-  contactsData: Array<ContactInterface> | void = undefined;
+  contactsData: Array<ContactInterface> | any = undefined;
   contacts: Array<ContactInterface> = [];
   categories: Array<CategoryInterface> = [
     { name: 'First Name', value: 'firstName' },
@@ -21,16 +21,16 @@ export class ContactsPageComponent {
   ];
 
   display: string = 'table';
+  dataRecived: boolean = false;
+  unsubscribeGetAll: Function = () => {};
+
   controllers: ControllerInterface[] = [
     { icon: 'fa fa-table-list', value: 'table' },
     { icon: 'fa fa-folder', value: 'folder' },
     { icon: 'fa-solid fa-arrow-left-long', value: 'hebrew' },
   ];
 
-  constructor(private contactService: ContactsServiceService) {
-    this.contacts = contactService.getAll();
-    this.contactsData = this.contacts;
-  }
+  constructor(private contactService: ContactsServiceService) {}
 
   onSearch(array: ContactInterface[]) {
     this.contacts = array;
@@ -43,7 +43,22 @@ export class ContactsPageComponent {
   deleteContact(e: MouseEvent, id: string) {
     e.stopPropagation();
     this.contactService.delete(id);
-    this.contactsData = this.contactService.getAll();
+    this.contactsData = this.contactService.getAll(() => {});
     this.contacts = this.contactsData;
+  }
+
+  ngOnInit() {
+    this.contactService.getAll(
+      (contacts: ContactInterface[], unsubscribeGetAll: Function) => {
+        this.contactsData = contacts;
+        this.contacts = this.contactsData;
+        this.dataRecived = true;
+        this.unsubscribeGetAll = unsubscribeGetAll;
+      }
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribeGetAll();
   }
 }
