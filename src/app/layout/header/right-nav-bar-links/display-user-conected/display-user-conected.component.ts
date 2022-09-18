@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { UserService } from 'src/app/pages/Users/user.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { UserService } from 'src/app/pages/Users/user.service';
 })
 export class DisplayUserConectedComponent {
   constructor(private US: UserService) {}
-
+  userEmail: any;
   connected: boolean = false;
 
   logOut() {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { UserService } from 'src/app/pages/Users/user.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { UserService } from 'src/app/pages/Users/user.service';
 })
 export class RightNavBarLinksComponent implements OnInit {
   user: any;
-
+  @Input() userEmail: any = this.US.userEmail;
   constructor(private US: UserService) {}
 
   ngOnInit(): void {

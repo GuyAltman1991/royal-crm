@@ -4,7 +4,10 @@
   icon="fas fa-address-book"
 ></app-page-header>
 
-<div class="d-flex justify-content-between">
+<div
+  *ngIf="contacts && dataRecived && contacts.length; else loader"
+  class="d-flex justify-content-between"
+>
   <div class="mb-2">
     <a
       routerLink="new-contact"
@@ -20,6 +23,7 @@
     (onChangeDisplay)="onChangeDisplay($event)"
   ></app-display-mode-controllers>
 </div>
+<app-sort-contact></app-sort-contact>
 
 <search-bar
   *ngIf="contacts"
@@ -49,3 +53,5 @@
     {{ "opss... no contacts where found in the database!" | paragraphCapital }}
   </div>
 </ng-template>
+
+<ng-template #loader><app-loader></app-loader></ng-template>

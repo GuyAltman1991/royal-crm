@@ -47,6 +47,7 @@ import { environment } from '../environments/environment';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { LoaderComponent } from './components/loader/loader.component';
+import { SortContactComponent } from './pages/contacts/sort-contact/sort-contact.component';
 
 @NgModule({
   declarations: [
@@ -89,6 +90,7 @@ import { LoaderComponent } from './components/loader/loader.component';
     CustomersFolderComponent,
     ContactsHebrewComponent,
     LoaderComponent,
+    SortContactComponent,
   ],
   imports: [
     BrowserModule,

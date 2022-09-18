@@ -15,6 +15,7 @@ import { LoginInterface } from '../login-page/login-interface';
   providedIn: 'root',
 })
 export class UserService {
+  userEmail: any;
   constructor(
     private auth: Auth,
 
@@ -28,6 +29,8 @@ export class UserService {
         console.log(credentials);
 
         cb(credentials);
+        this.userEmail = credentials.user.email;
+        console.log(this.userEmail);
         console.log('user signup succefuly');
       })
       .catch(() => cb(null));
