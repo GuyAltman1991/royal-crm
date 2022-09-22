@@ -1,9 +1,11 @@
 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+  <li class="d-flex align-items-center text-break">
+    {{ "Hello: " + userName }}
+  </li>
   <nav-link-top
     text="logout"
     to="logout"
     routerLink="logout-page"
     (click)="logOut()"
   ></nav-link-top>
-  <nav-link-top [userEmail]="[userEmail]"></nav-link-top>
 </ul>

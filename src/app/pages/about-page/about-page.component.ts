@@ -3,14 +3,12 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-about-page',
   templateUrl: './about-page.component.html',
-  styles: [
-  ]
+  styles: [],
 })
 export class AboutPageComponent implements OnInit {
+  arr: Array<any> = ['mosh', 'dav', 'ben', 'lav'];
+  constructor() {}
+  clientScrips = ['html', 'css', 'javascript', 'angular', 'react'];
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

@@ -22,15 +22,16 @@ export class UserService {
     private router: Router
   ) {}
 
+  showUserName() {
+    return this.auth.currentUser?.email;
+  }
+
   signupWithEmailAndPassword(user: SignUpInterface, cb: Function) {
     const { email, password } = user;
     createUserWithEmailAndPassword(this.auth, email, password)
       .then((credentials) => {
         console.log(credentials);
-
         cb(credentials);
-        this.userEmail = credentials.user.email;
-        console.log(this.userEmail);
         console.log('user signup succefuly');
       })
       .catch(() => cb(null));

@@ -10,6 +10,7 @@ export class DisplayUserConectedComponent {
   constructor(private US: UserService) {}
   userEmail: any;
   connected: boolean = false;
+  userName: any = this.US.showUserName();
 
   logOut() {
     this.US.logOut();

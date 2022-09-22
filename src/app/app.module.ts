@@ -96,6 +96,7 @@ import { SortContactComponent } from './pages/contacts/sort-contact/sort-contact
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),

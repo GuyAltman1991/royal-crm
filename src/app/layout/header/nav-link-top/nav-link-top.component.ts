@@ -10,5 +10,4 @@ export class NavLinkTopComponent {
   @Input() to: string = '';
   @Input() text: string = '';
   constructor(private US: UserService) {}
-  @Input() userEmail: any = this.US.userEmail;
 }
