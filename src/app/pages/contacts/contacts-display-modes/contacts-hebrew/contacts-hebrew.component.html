@@ -17,7 +17,7 @@
   </thead>
   <tbody>
     <tr
-      *ngFor="let contact of contacts; index as i"
+      *ngFor="let contact of contacts | orderByPipe: 'firstName'; index as i"
       [routerLink]="['contact-details', contact._id]"
     >
       <td>
@@ -39,8 +39,8 @@
       <td>{{ contact.notes }}</td>
       <td>{{ contact.birthDay | calculateAge }}</td>
       <td>{{ contact.phone }}</td>
-      <td>{{ contact.email }}</td>
-      <td>{{ contact.firstName + " " + contact.lastName }}</td>
+      <td>{{ contact.email | lowercase }}</td>
+      <td>{{ contact.firstName + " " + contact.lastName | lowercase }}</td>
       <th scope="row">{{ i + 1 }}</th>
     </tr>
   </tbody>

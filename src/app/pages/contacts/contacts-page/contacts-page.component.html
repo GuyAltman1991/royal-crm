@@ -5,7 +5,7 @@
 ></app-page-header>
 
 <div
-  *ngIf="contacts && dataRecived && contacts.length; else loader"
+  *ngIf="dataRecived; else noContacts && loader"
   class="d-flex justify-content-between"
 >
   <div class="mb-2">
@@ -23,7 +23,6 @@
     (onChangeDisplay)="onChangeDisplay($event)"
   ></app-display-mode-controllers>
 </div>
-<app-sort-contact></app-sort-contact>
 
 <search-bar
   *ngIf="contacts"

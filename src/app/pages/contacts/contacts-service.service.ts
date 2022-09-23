@@ -18,44 +18,6 @@ import { ContactInterface } from './contact-interface';
   providedIn: 'root',
 })
 export class ContactsServiceService {
-  private contacts: ContactInterface[] = [
-    {
-      _id: '118154',
-      firstName: 'Avi',
-      lastName: 'Bababi',
-      email: 'avi@gmail.com',
-      phone: '050-5554444',
-      address: {
-        country: 'israel',
-        city: 'tel-aviv',
-        street: 'rotshild',
-        houseNumber: 0,
-        zip: 1234,
-      },
-      createdAt: new Date(),
-
-      birthDay: new Date('July 20, 1957'),
-    },
-    {
-      _id: '248514',
-      firstName: 'yoav',
-      lastName: 'alon',
-      email: 'yoav@gmail.com',
-      phone: '050-0000000',
-      address: {
-        country: 'israel',
-        city: 'ramat-gan',
-        street: 'hroe',
-        houseNumber: 0,
-        zip: 1234,
-      },
-      createdAt: new Date(),
-      notes: 'Impatient!',
-
-      birthDay: new Date('December 17, 1995'),
-    },
-  ];
-
   collectionRef: CollectionReference<DocumentData> = collection(
     this.FS,
     'contacts'

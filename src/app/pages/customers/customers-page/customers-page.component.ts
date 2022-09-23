@@ -39,10 +39,8 @@ export class CustomersPageComponent implements OnInit {
     this.display = display;
   }
 
-  deleteCustomer(e: MouseEvent, id: string) {
-    e.stopPropagation();
-    this.customerService.delete(id);
-    this.customerData = this.customerService.getAll(() => {});
+  deleteCustomer(array: Array<CustomersInterface>) {
+    this.customerData = array;
     this.customers = this.customerData;
   }
 

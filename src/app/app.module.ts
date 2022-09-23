@@ -48,6 +48,7 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { LoaderComponent } from './components/loader/loader.component';
 import { SortContactComponent } from './pages/contacts/sort-contact/sort-contact.component';
+import { OrderByPipePipe } from './pipes/order-by-pipe.pipe';
 
 @NgModule({
   declarations: [
@@ -91,6 +92,7 @@ import { SortContactComponent } from './pages/contacts/sort-contact/sort-contact
     ContactsHebrewComponent,
     LoaderComponent,
     SortContactComponent,
+    OrderByPipePipe,
   ],
   imports: [
     BrowserModule,

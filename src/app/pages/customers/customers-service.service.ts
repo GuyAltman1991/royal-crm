@@ -50,7 +50,9 @@ export class CustomersServiceService {
 
   delete(id: string) {
     const docRef = doc(this.FS, 'customers', id);
-    deleteDoc(docRef).catch((error) => console.log(error));
+    deleteDoc(docRef)
+      .then(() => {})
+      .catch((error) => console.log(error));
   }
 
   edit(customer: CustomersInterface, id: string, cb: Function) {

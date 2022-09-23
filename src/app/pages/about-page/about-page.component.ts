@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, VERSION } from '@angular/core';
 
 @Component({
   selector: 'app-about-page',
@@ -6,9 +6,5 @@ import { Component, OnInit } from '@angular/core';
   styles: [],
 })
 export class AboutPageComponent implements OnInit {
-  arr: Array<any> = ['mosh', 'dav', 'ben', 'lav'];
-  constructor() {}
-  clientScrips = ['html', 'css', 'javascript', 'angular', 'react'];
-
   ngOnInit(): void {}
 }

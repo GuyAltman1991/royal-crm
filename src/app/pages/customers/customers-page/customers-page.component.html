@@ -4,7 +4,15 @@
   icon="fas fa-users"
 ></app-page-header>
 
-<div *ngIf="dataRecived && customers && customers.length; else loader">
+<search-bar
+  *ngIf="customers"
+  [categories]="categories"
+  [array]="customerData"
+  (onArrayFilterd)="onSearch($event)"
+>
+</search-bar>
+
+<div *ngIf="dataRecived; else noCustomers; loader">
   <div class="d-flex justify-content-between">
     <div class="mb-2">
       <a
@@ -22,15 +30,7 @@
     ></app-display-mode-controllers>
   </div>
 
-  <search-bar
-    *ngIf="customerData && customerData.length"
-    [categories]="categories"
-    [array]="customerData"
-    (onArrayFilterd)="onSearch($event)"
-  >
-  </search-bar>
-
-  <app-customers-table [customers]="customers" *ngIf="display === 'table'">
+  <app-customers-table *ngIf="display === 'table'" [customers]="customers">
   </app-customers-table>
 
   <customers-folder
@@ -38,5 +38,11 @@
     *ngIf="display === 'folder'"
   ></customers-folder>
 </div>
+
+<ng-template #noCustomers>
+  <div>
+    {{ "opss... no customers where found in the database!" | paragraphCapital }}
+  </div>
+</ng-template>
 
 <ng-template #loader><app-loader></app-loader></ng-template>
