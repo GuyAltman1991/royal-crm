@@ -25,5 +25,5 @@ Run `ng deploy` to build the project.
 
 ## environments
 
-put the invironments file in the src folder and then open with angular server. ng g -o
+put the invironments file in the src folder and then open with angular server. ng s -o
 
