@@ -37,6 +37,10 @@
     [customers]="customers"
     *ngIf="display === 'folder'"
   ></customers-folder>
+  <app-customers-cards
+    [customers]="customers"
+    *ngIf="display === 'cards'"
+  ></app-customers-cards>
 </div>
 
 <ng-template #noCustomers>

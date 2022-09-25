@@ -17,7 +17,10 @@ export class ContactsTableComponent implements OnInit {
   deleteContact(e: MouseEvent, id: string) {
     e.stopPropagation();
     this.CS.delete(id);
-    this.onDeletContact.emit(this.CS.getAll(() => {}));
+    this.CS.getAll((contacts: ContactInterface[]) => {
+      this.contacts = contacts;
+      this.onDeletContact.emit(contacts);
+    });
   }
 
   ngOnInit(): void {}

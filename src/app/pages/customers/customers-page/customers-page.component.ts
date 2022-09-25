@@ -25,6 +25,7 @@ export class CustomersPageComponent implements OnInit {
   controllers: Array<ControllerInterface> = [
     { icon: 'fa fa-table-list', value: 'table' },
     { icon: 'fa fa-folder', value: 'folder' },
+    { icon: 'fas fa-th', value: 'cards' },
   ];
 
   display: string = 'table';

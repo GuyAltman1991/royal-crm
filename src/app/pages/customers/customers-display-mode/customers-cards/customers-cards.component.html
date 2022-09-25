@@ -1,0 +1,38 @@
+<div class="d-flex row px-0 mx-0">
+  <span></span>
+</div>
+
+<div
+  class="container d-flex flex-lg-wrap flex-md-wrap flex-xxl-wrap flex-sm-wrap flex-xl-wrap flex-wrap"
+  *ngIf="customers && customers.length; else noCustomers"
+>
+  <div
+    *ngFor="let customer of customers | orderByPipe: 'firstName'"
+    [routerLink]="['customer-details', customer._id]"
+    class="card m-1 col-5 col-sm-4 col-md-3 col-xl-2 wrapper"
+  >
+    <div class="card-body">
+      <h5 class="card-title">
+        {{ customer.firstName + " " + customer.lastName | lowercase }}
+      </h5>
+      <p class="card-text">
+        {{
+          customer.address.city +
+            " " +
+            customer.address.street +
+            " " +
+            customer.address.houseNumber
+        }}
+      </p>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">{{ customer.phone }}</small>
+    </div>
+  </div>
+</div>
+
+<ng-template #noCustomers>
+  <div>
+    {{ "opss... no customers where found in the database!" | paragraphCapital }}
+  </div>
+</ng-template>

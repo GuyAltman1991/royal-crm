@@ -67,13 +67,13 @@
         type="text"
         class="form-control"
         required
-        minlength="5"
+        minlength="9"
         maxlength="9"
         #idField="ngModel"
         [ngClass]="{ 'is-invalid': idField.invalid && idField.touched }"
       />
       <span class="invalid-feedback">{{
-        "id must be at list 7 characters" | paragraphCapital
+        "id must be 9 characters" | paragraphCapital
       }}</span>
     </div>
     <div class="col-12 col-md-5 mb-2 form-group">

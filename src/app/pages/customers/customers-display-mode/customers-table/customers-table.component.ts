@@ -16,7 +16,10 @@ export class CustomersTableComponent implements OnInit {
   deleteCustomer(e: MouseEvent, id: string) {
     e.stopPropagation();
     this.CS.delete(id);
-    this.onDeleteCustomer.emit(this.CS.getAll(() => {}));
+    this.CS.getAll((customers: CustomersInterface[]) => {
+      this.customers = customers;
+      this.onDeleteCustomer.emit(customers);
+    });
   }
 
   ngOnInit(): void {}

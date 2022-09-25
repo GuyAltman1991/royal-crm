@@ -27,6 +27,7 @@ export class ContactsPageComponent {
   controllers: ControllerInterface[] = [
     { icon: 'fa fa-table-list', value: 'table' },
     { icon: 'fa fa-folder', value: 'folder' },
+    { icon: 'fas fa-th', value: 'cards' },
     { icon: 'fa-solid fa-arrow-left-long', value: 'hebrew' },
   ];
 

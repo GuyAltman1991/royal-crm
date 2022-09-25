@@ -33,14 +33,17 @@
 
 <app-contacts-table
   *ngIf="display === 'table'"
-  [contacts]="contacts"
   (onDeletContact)="deleteContact($event, 'id')"
+  [contacts]="contacts"
 ></app-contacts-table>
 
 <contacts-folder
   *ngIf="display === 'folder'"
   [contacts]="contacts"
 ></contacts-folder>
+
+<app-contacts-cards *ngIf="display === 'cards'" [contacts]="contacts">
+</app-contacts-cards>
 
 <contacts-hebrew
   *ngIf="display === 'hebrew'"

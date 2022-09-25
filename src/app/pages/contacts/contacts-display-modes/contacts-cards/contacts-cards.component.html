@@ -1,0 +1,38 @@
+<div class="d-flex row px-0 mx-0">
+  <span></span>
+</div>
+
+<div
+  class="container d-flex flex-lg-wrap flex-md-wrap flex-xxl-wrap flex-sm-wrap flex-xl-wrap flex-wrap"
+  *ngIf="contacts && contacts.length; else noContacts"
+>
+  <div
+    *ngFor="let contact of contacts | orderByPipe: 'firstName'"
+    [routerLink]="['contact-details', contact._id]"
+    class="card m-1 col-5 col-sm-4 col-md-3 col-xl-2 wrapper"
+  >
+    <div class="card-body">
+      <h5 class="card-title">
+        {{ contact.firstName + " " + contact.lastName | lowercase }}
+      </h5>
+      <p class="card-text">
+        {{
+          contact.address.city +
+            " " +
+            contact.address.street +
+            " " +
+            contact.address.houseNumber
+        }}
+      </p>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">{{ contact.phone }}</small>
+    </div>
+  </div>
+</div>
+
+<ng-template #noContacts>
+  <div>
+    {{ "opss... no contact where found in the database!" | paragraphCapital }}
+  </div>
+</ng-template>

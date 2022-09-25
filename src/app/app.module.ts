@@ -49,6 +49,8 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { LoaderComponent } from './components/loader/loader.component';
 import { SortContactComponent } from './pages/contacts/sort-contact/sort-contact.component';
 import { OrderByPipePipe } from './pipes/order-by-pipe.pipe';
+import { CustomersCardsComponent } from './pages/customers/customers-display-mode/customers-cards/customers-cards.component';
+import { ContactsCardsComponent } from './pages/contacts/contacts-display-modes/contacts-cards/contacts-cards.component';
 
 @NgModule({
   declarations: [
@@ -93,6 +95,8 @@ import { OrderByPipePipe } from './pipes/order-by-pipe.pipe';
     LoaderComponent,
     SortContactComponent,
     OrderByPipePipe,
+    CustomersCardsComponent,
+    ContactsCardsComponent,
   ],
   imports: [
     BrowserModule,
