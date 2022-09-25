@@ -32,8 +32,6 @@ export class SignupPageComponent {
         }, 4000);
       });
     }
-    console.log(value);
-    console.log(valid);
   }
 
   signUpWithGoogle() {

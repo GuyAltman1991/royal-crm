@@ -41,7 +41,6 @@ export class CustomersServiceService {
 
   add(customer: CustomersInterface, cb: Function) {
     customer.createdAt = serverTimestamp();
-    console.log(customer);
 
     addDoc(this.collectionRef, customer)
       .then(() => cb())

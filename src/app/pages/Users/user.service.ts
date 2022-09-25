@@ -49,8 +49,6 @@ export class UserService {
     const { email, password } = user;
     signInWithEmailAndPassword(this.auth, email, password)
       .then((credentials) => {
-        console.log(credentials);
-
         cb(credentials);
       })
       .catch(() => cb(null));

@@ -43,9 +43,6 @@ export class LoginPageComponent {
         }
       });
     }
-
-    console.log(value);
-    console.log(valid);
   }
   resetForm(form: NgForm) {
     form.resetForm({ email: '', password: '' });
