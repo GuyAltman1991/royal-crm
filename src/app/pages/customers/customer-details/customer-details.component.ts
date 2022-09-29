@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { CustomersInterface } from '../customers-interface';
@@ -13,8 +14,13 @@ export class CustomerDetailsComponent implements OnInit {
   customer: CustomersInterface | void = undefined;
   constructor(
     private router: ActivatedRoute,
-    private CS: CustomersServiceService
+    private CS: CustomersServiceService,
+    private location: Location
   ) {}
+
+  back(): void {
+    this.location.back();
+  }
 
   ngOnInit(): void {
     this.router.paramMap.subscribe((param: ParamMap) => {

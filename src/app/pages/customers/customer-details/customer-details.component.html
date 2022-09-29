@@ -5,14 +5,14 @@
 ></app-page-header>
 
 <div class="my-2">
-  <a routerLink="/customers" class="btn btn-outline-dark"
-    ><i class="fas fa-arrow-alt-circle-left"></i> {{ "back" | titlecase }}</a
+  <span routerLink="/customers" class="btn btn-outline-dark"
+    ><i class="fas fa-arrow-alt-circle-left"></i> {{ "back" | titlecase }}</span
   >
 </div>
 
 <div *ngIf="customer; else noCustomer">
   <div class="center">
-    <div class="col-12 col-md-11 col-lg-10">
+    <div class="col-12 col-md-11 col-lg-10 col-sm-auto col-xl-4">
       <table
         class="table table-success table-striped mt-2 table-bordered table-hover border-dark"
       >

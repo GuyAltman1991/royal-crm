@@ -40,7 +40,6 @@ export class ContactsServiceService {
 
   add(contact: ContactInterface, cb: Function) {
     contact.createdAt = serverTimestamp();
-    console.log(contact);
 
     addDoc(this.collectionRef, contact)
       .then(() => cb())
@@ -65,7 +64,6 @@ export class ContactsServiceService {
       const result = await getDoc(docRef);
       const contact = { ...result.data(), _id: result.id };
       cb(contact);
-      console.log(contact);
     } catch (error) {
       console.log(error);
     }

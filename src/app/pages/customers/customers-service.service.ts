@@ -67,7 +67,6 @@ export class CustomersServiceService {
       const result = await getDoc(docRef);
       const customer = { ...result.data(), _id: result.id };
       cb(customer);
-      console.log(customer);
     } catch (error) {
       console.log(error);
     }

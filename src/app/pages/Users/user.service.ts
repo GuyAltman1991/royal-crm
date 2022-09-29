@@ -30,7 +30,6 @@ export class UserService {
     const { email, password } = user;
     createUserWithEmailAndPassword(this.auth, email, password)
       .then((credentials) => {
-        console.log(credentials);
         cb(credentials);
         console.log('user signup succefuly');
       })
