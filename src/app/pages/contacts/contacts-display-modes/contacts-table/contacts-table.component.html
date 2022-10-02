@@ -1,53 +1,56 @@
-<table
-  *ngIf="contacts && contacts.length; else noContacts"
-  class="table table-striped container mt-4"
->
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Full Name</th>
-      <th scope="col">Email</th>
-      <th scope="col">Phone</th>
-      <th scope="col">Age</th>
+<div class="table-responsive">
+  <table
+    *ngIf="contacts && contacts.length; else noContacts"
+    class="table table-striped container mt-4 table-responsive"
+  >
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Full Name</th>
+        <th class="d-none d-xl-table-cell" scope="col">Email</th>
+        <th class="d-none d-md-table-cell" scope="col">Phone</th>
+        <th class="d-none d-xxl-table-cell" scope="col">Age</th>
 
-      <th scope="col">Notes</th>
-      <th scope="col">Edit</th>
-      <th scope="col">Delete</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr
-      *ngFor="let contact of contacts | orderByPipe: 'firstName'; index as i"
-      [routerLink]="['contact-details', contact._id]"
-    >
-      <th scope="row">{{ i + 1 }}</th>
+        <th class="d-none d-xxl-table-cell" scope="col">Notes</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let contact of contacts | orderByPipe: 'firstName'; index as i"
+        [routerLink]="['contact-details', contact._id]"
+      >
+        <th scope="row">{{ i + 1 }}</th>
 
-      <td>{{ contact.firstName + " " + contact.lastName | lowercase }}</td>
-      <td>{{ contact.email | lowercase }}</td>
-      <td>{{ contact.phone }}</td>
-      <td>{{ contact.birthDay | calculateAge }}</td>
-      <td>{{ contact.notes }}</td>
-      <td>
-        <a
-          class="btn btn-outline-dark"
-          [routerLink]="['edit-contact', contact._id]"
-          role="button"
-          ><i class="fas fa-pen"></i
-        ></a>
-      </td>
-      <td>
-        <button
-          class="btn btn-outline-dark"
-          (click)="deleteContact($event, contact._id!)"
-        >
-          <i class="fas fa-trash"></i>
-        </button>
-      </td>
-      <td></td>
-    </tr>
-  </tbody>
-</table>
-
+        <td>{{ contact.firstName + " " + contact.lastName | lowercase }}</td>
+        <td class="d-none d-xl-table-cell">{{ contact.email | lowercase }}</td>
+        <td class="d-none d-md-table-cell">{{ contact.phone }}</td>
+        <td class="d-none d-xxl-table-cell">
+          {{ contact.birthDay | calculateAge }}
+        </td>
+        <td class="d-none d-xxl-table-cell">{{ contact.notes }}</td>
+        <td>
+          <a
+            class="btn btn-outline-dark"
+            [routerLink]="['edit-contact', contact._id]"
+            role="button"
+            ><i class="fas fa-pen"></i
+          ></a>
+        </td>
+        <td>
+          <button
+            class="btn btn-outline-dark"
+            (click)="deleteContact($event, contact._id!)"
+          >
+            <i class="fas fa-trash"></i>
+          </button>
+        </td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 <ng-template #noContacts>
   <div>
     {{ "opss... no contacts where found in the database!" | paragraphCapital }}

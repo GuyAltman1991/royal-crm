@@ -1,18 +1,18 @@
 <table
   *ngIf="customers && customers.length; else noCustomers"
-  class="table table-striped container mt-4"
+  class="table table-striped container mt-4 table-hover"
 >
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">CARD ID</th>
+      <th class="d-none d-md-table-cell" scope="col">CARD ID</th>
       <th scope="col">Full Name</th>
-      <th scope="col">Email</th>
-      <th scope="col">Phone</th>
-      <th scope="col">Birthday</th>
-      <th scope="col">Age</th>
-      <th scope="col">Address</th>
-      <th scope="col">Notes</th>
+      <th class="d-none d-xl-table-cell">Email</th>
+      <th class="d-none d-md-table-cell" scope="col">Phone</th>
+      <th class="d-none d-xxl-table-cell" scope="col">Birthday</th>
+      <th class="d-none d-xxl-table-cell" scope="col">Age</th>
+      <th class="d-none d-xl-table-cell" scope="col">Address</th>
+      <th class="d-none d-xxl-table-cell" scope="col">Notes</th>
       <th scope="col">Edit</th>
       <th scope="col">Delete</th>
     </tr>
@@ -21,21 +21,28 @@
     <tr
       *ngFor="let customer of customers | orderByPipe: 'firstName'; index as i"
       [routerLink]="['customer-details', customer._id]"
+      role="button"
     >
       <th scope="row">{{ i + 1 }}</th>
-      <td>{{ customer.idCard }}</td>
+      <td class="d-none d-md-table-cell">{{ customer.idCard }}</td>
       <td>{{ customer.firstName + " " + customer.lastName | lowercase }}</td>
-      <td>{{ customer.email | lowercase }}</td>
-      <td>{{ customer.phone }}</td>
-      <td>{{ customer.birthDay | date: "mediumDate" }}</td>
-      <td>{{ customer.birthDay | calculateAge }}</td>
+      <td class="d-none d-xl-table-cell">
+        {{ customer.email | lowercase }}
+      </td>
+      <td class="d-none d-md-table-cell">{{ customer.phone }}</td>
+      <td class="d-none d-xxl-table-cell">
+        {{ customer.birthDay | date: "mediumDate" }}
+      </td>
+      <td class="d-none d-xxl-table-cell">
+        {{ customer.birthDay | calculateAge }}
+      </td>
 
-      <td>
+      <td class="d-none d-xl-table-cell">
         {{ this.customer.address.city }}
         {{ this.customer.address.street }}
         {{ this.customer.address.houseNumber }}
       </td>
-      <td>{{ this.customer.notes }}</td>
+      <td class="d-none d-xxl-table-cell">{{ this.customer.notes }}</td>
 
       <td>
         <a
