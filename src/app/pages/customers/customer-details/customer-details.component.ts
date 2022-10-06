@@ -15,11 +15,11 @@ export class CustomerDetailsComponent implements OnInit {
   constructor(
     private router: ActivatedRoute,
     private CS: CustomersServiceService,
-    private location: Location
+    private _location: Location
   ) {}
 
-  back(): void {
-    this.location.back();
+  backClicked() {
+    this._location.back();
   }
 
   ngOnInit(): void {
