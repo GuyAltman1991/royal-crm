@@ -19,6 +19,7 @@
     <tr
       *ngFor="let contact of contacts | orderByPipe: 'firstName'; index as i"
       [routerLink]="['contact-details', contact._id]"
+      role="button"
     >
       <td>
         <button

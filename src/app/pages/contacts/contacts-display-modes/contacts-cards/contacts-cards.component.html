@@ -9,6 +9,7 @@
   <div
     *ngFor="let contact of contacts | orderByPipe: 'firstName'"
     [routerLink]="['contact-details', contact._id]"
+    role="button"
     class="card m-1 col-5 col-sm-4 col-md-3 col-xl-2 wrapper"
   >
     <div class="card-body">
