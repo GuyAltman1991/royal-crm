@@ -51,6 +51,7 @@ import { SortContactComponent } from './pages/contacts/sort-contact/sort-contact
 import { OrderByPipePipe } from './pipes/order-by-pipe.pipe';
 import { CustomersCardsComponent } from './pages/customers/customers-display-mode/customers-cards/customers-cards.component';
 import { ContactsCardsComponent } from './pages/contacts/contacts-display-modes/contacts-cards/contacts-cards.component';
+import { UserDetailsComponent } from './pages/users/user-details/user-details.component';
 
 @NgModule({
   declarations: [
@@ -97,6 +98,7 @@ import { ContactsCardsComponent } from './pages/contacts/contacts-display-modes/
     OrderByPipePipe,
     CustomersCardsComponent,
     ContactsCardsComponent,
+    UserDetailsComponent,
   ],
   imports: [
     BrowserModule,

@@ -25,6 +25,9 @@ export class UserService {
   showUserName() {
     return this.auth.currentUser?.email;
   }
+  showUserCreatedDate() {
+    return this.auth.currentUser?.metadata.creationTime;
+  }
 
   signupWithEmailAndPassword(user: SignUpInterface, cb: Function) {
     const { email, password } = user;

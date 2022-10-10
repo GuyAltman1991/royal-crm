@@ -13,6 +13,7 @@ import { NewCustomerComponent } from '../pages/customers/new-customer/new-custom
 import { ErrorPageComponent } from '../pages/error-page/error-page.component';
 import { LoginPageComponent } from '../pages/login-page/login-page/login-page.component';
 import { SignupPageComponent } from '../pages/Users/signup-page/signup-page.component';
+import { UserDetailsComponent } from '../pages/users/user-details/user-details.component';
 import { AuthGuard } from './auth.guard';
 import { LoggedGuard } from './logged.guard';
 
@@ -31,6 +32,11 @@ const routes: Routes = [
     path: 'signup-page',
     component: SignupPageComponent,
     canActivate: [LoggedGuard],
+  },
+  {
+    path: 'user-details-page',
+    component: UserDetailsComponent,
+    canActivate: [AuthGuard],
   },
   { path: 'about-page', component: AboutPageComponent },
   {
